@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+
+    "target": "es6",
+    "module": "commonJS",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true
+  },
+  "include": ["script.ts"],
+  "exclude": ["node_modules", "**/__tests__/*"]
+}
