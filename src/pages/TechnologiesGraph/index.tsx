@@ -8,7 +8,6 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected"
-import { Paper } from '@material-ui/core';
 // @ts-ignore
 import Page from 'material-ui-shell/lib/containers/Page'
 // @ts-ignore
@@ -16,22 +15,11 @@ import Page from 'material-ui-shell/lib/containers/Page'
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 
 const useStyles = makeStyles(() => ({
-  Container: {
-    margin:'auto',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: "600px",
-    height: "900px"
-  },
+
   TechnologiesGraph: {
-    /* backgroundColor: "#30303d", */
-    // margin:'auto',
-    width: "95%",
-    height: "95%"
-/*     width: "95%",
-    height: "100vh" */
-/*     width: "600px",
-    height: "900px" */
+    width: "100%",
+    height: "100vh"
+
   },
   }));
 
@@ -137,15 +125,11 @@ const TechnologiesGraph = () => {
   }, [])
   return ( 
     
-    <Page
-    /* pageTitle={intl.formatMessage({ id: 'about', defaultMessage: 'About' })} */
-  >
-    <Scrollbar>
-    <Paper className={classes.Container}>
-      <div id="chartDiv"className={classes.TechnologiesGraph} />
-    </Paper>
-    </Scrollbar>
-  </Page>
+    <Page>
+      <Scrollbar>
+        <div id="chartDiv"className={classes.TechnologiesGraph} />
+      </Scrollbar>
+    </Page>
 
   );
 }

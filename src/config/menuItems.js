@@ -63,12 +63,12 @@ const getMenuItems = (props) => {
           ? intl.formatMessage({ id: 'sign_out' })
           : intl.formatMessage({ id: 'sign_in' }),
         leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
-      },{
+      },/* {
         value: '/technologies_graph',
         visible: isAuthorised,
-        primaryText: intl.formatMessage({ id: 'technologiesgraph' }),
+        primaryText: intl.formatMessage({ id: 'Technologies Graph' }),
         leftIcon: <DaschboardIcon />,
-      }, 
+      },  */
     ]
   }
   return [
@@ -76,19 +76,25 @@ const getMenuItems = (props) => {
       value: '/home',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'home' }),
-      leftIcon: <DaschboardIcon />,
+      /* leftIcon: <DaschboardIcon />, */
     },    
     {
       value: '/to_do',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'todo' }),
-      leftIcon: <DaschboardIcon />,
+      /* leftIcon: <DaschboardIcon />, */
     },
     {
       value: '/technologies_graph',
       visible: isAuthorised,
-      primaryText: intl.formatMessage({ id: 'technologiesgraph' }),
-      leftIcon: <DaschboardIcon />,
+      primaryText: intl.formatMessage({ id: 'Technologies Graph' }),
+      /* leftIcon: <DaschboardIcon />, */
+    },
+    {
+      value: '/canadian_polygon_map',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'Canadian Poly Map' }),
+      /* leftIcon: <DaschboardIcon />, */
     },
     {
       value: null,

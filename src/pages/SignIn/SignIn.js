@@ -87,10 +87,13 @@ const SignIn = () => {
       <Paper className={classes.paper} elevation={6}>
         <div className={classes.container}>
           <Typography component="h1" variant="h5">
-            {intl.formatMessage({ id: 'sign_in' })}
+            {/* {intl.formatMessage({ id: 'sign_in' })} */}
           </Typography>
+{/*           <Typography component="h1" variant="h5">
+            Just click "SIGN IN" with any combination of username and password, or nothing at all
+          </Typography> */}
           <form className={classes.form} onSubmit={handleSubmit} noValidate>
-            <TextField
+{/*             <TextField
               value={username}
               onInput={(e) => setUsername(e.target.value)}
               variant="outlined"
@@ -115,7 +118,7 @@ const SignIn = () => {
               type="password"
               id="password"
               autoComplete="current-password"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -123,11 +126,12 @@ const SignIn = () => {
               color="primary"
               className={classes.submit}
             >
-              {intl.formatMessage({ id: 'sign_in' })}
+              Proceed as anonymous
+              {/* {intl.formatMessage({ id: 'sign_in' })} */}
             </Button>
           </form>
 
-          <div
+{/*           <div
             style={{
               display: 'flex',
               flexDirection: 'row',
@@ -141,7 +145,7 @@ const SignIn = () => {
             <Link to="/signup">
               {intl.formatMessage({ id: 'registration' })}
             </Link>
-          </div>
+          </div> */}
         </div>
       </Paper>
     </Page>
