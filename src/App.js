@@ -1,20 +1,13 @@
-import { TechnologiesGraph } from './TechnologiesGraph' 
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react'
+import App from 'base-shell/lib'
+import MUIConfig from 'material-ui-shell/lib'
+import merge from 'base-shell/lib/utils/config'
+import _config from './config'
 
+const config = merge(MUIConfig, _config)
 
-const useStyles = makeStyles(() => ({
-  App: {
-    textAlign: "center"
-  },
-  }));
-
-function App() {
-  const classes = useStyles();
-  return (
-    <div className="classes.App">
-      <TechnologiesGraph/>
-    </div>
-  );
+export default class Demo extends Component {
+  render() {
+    return <App config={config} />
+  }
 }
-
-export default App;
