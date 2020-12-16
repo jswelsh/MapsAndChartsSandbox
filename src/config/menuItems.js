@@ -63,7 +63,12 @@ const getMenuItems = (props) => {
           ? intl.formatMessage({ id: 'sign_out' })
           : intl.formatMessage({ id: 'sign_in' }),
         leftIcon: isAuthorised ? <ExitToAppIcon /> : <LockIcon />,
-      },
+      },{
+        value: '/technologies_graph',
+        visible: isAuthorised,
+        primaryText: intl.formatMessage({ id: 'technologiesgraph' }),
+        leftIcon: <DaschboardIcon />,
+      }, 
     ]
   }
   return [
@@ -77,6 +82,12 @@ const getMenuItems = (props) => {
       value: '/to_do',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'todo' }),
+      leftIcon: <DaschboardIcon />,
+    },
+    {
+      value: '/technologies_graph',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'technologiesgraph' }),
       leftIcon: <DaschboardIcon />,
     },
     {
