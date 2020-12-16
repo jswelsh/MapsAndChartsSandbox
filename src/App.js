@@ -1,12 +1,20 @@
-
-import './App.css';
 import { TechnologiesGraph } from './TechnologiesGraph' 
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles(() => ({
+  App: {
+    textAlign: "center"
+  },
+  }));
 
 function App() {
+  const classes = useStyles();
   return (
-        <TechnologiesGraph/>
+    <div className="classes.App">
+      <TechnologiesGraph/>
+    </div>
   );
 }
-/*  <div className="App">
-    </div> */
+
 export default App;
