@@ -95,6 +95,11 @@ const getMenuItems = (props) => {
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Canadian Poly Map' }),
       /* leftIcon: <DaschboardIcon />, */
+    },{
+      value: '/tech_tags_graph',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'Tech Tags Graph' }),
+      /* leftIcon: <DaschboardIcon />, */
     },
     {
       value: null,
