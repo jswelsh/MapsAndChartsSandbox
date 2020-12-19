@@ -72,22 +72,26 @@ const getMenuItems = (props) => {
     ]
   }
   return [
-    {
+/*     {
       value: '/home',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'home' }),
-      /* leftIcon: <DaschboardIcon />, */
     },    
     {
       value: '/to_do',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'todo' }),
-      /* leftIcon: <DaschboardIcon />, */
-    },
+    }, */
     {
       value: '/technologies_graph',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Technologies Graph' }),
+      /* leftIcon: <DaschboardIcon />, */
+    },
+    {
+      value: '/bc_economic_map',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'BC Economic Map' }),
       /* leftIcon: <DaschboardIcon />, */
     },
     {

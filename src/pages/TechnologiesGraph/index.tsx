@@ -19,7 +19,6 @@ const useStyles = makeStyles(() => ({
   TechnologiesGraph: {
     width: "100%",
     height: "100vh"
-
   },
   }));
 
