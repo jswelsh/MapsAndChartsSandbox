@@ -4,13 +4,13 @@ import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
-import * as pitchData from "./data/pitches.json";
+import * as data from "./data.json";
 import RoomIcon from '@material-ui/icons/Room';
 import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  PopUp: {opacity:'100%'},
+  PopUp: {opacity:'100%'}
 }));
 
 export default function () {
@@ -23,9 +23,7 @@ export default function () {
     width:"100%",
     height:"100%"
   })
-  const classes = useStyles();
-
-
+  const classes = useStyles()
   const intl = useIntl()
 
   useEffect(() => {
@@ -69,7 +67,7 @@ export default function () {
     mapboxApiAccessToken={"pk.eyJ1IjoianN3ZWxzaCIsImEiOiJja2l4MGphcGozbG1yMnNwZG9nZnNkbDA0In0.9yfpYdKfH4z4CEopxNi0kQ"}
     onViewportChange={(viewport) => setViewport(viewport)}
     >
-    {pitchData.features.map(pitch => (
+    {data.pitches.map(pitch => (
       <Marker
         offsetTop={-24}
         offsetLeft={-24}
@@ -82,9 +80,8 @@ export default function () {
           color="secondary"
           // className="marker-btn"
           onClick={e => {
-            e.preventDefault();
-            setSelectedPitch(pitch);
-          }}
+            e.preventDefault()
+            setSelectedPitch(pitch)}}
           >
           <RoomIcon />
         </IconButton>
@@ -131,7 +128,6 @@ export default function () {
         </TableBody>
       </Table>
     </TableContainer>
-
       </Popup>
     ) : null}
     </ReactMapGL>
