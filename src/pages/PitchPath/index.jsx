@@ -1,11 +1,23 @@
 import AppBar from '@material-ui/core/AppBar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
+
 import { useIntl } from 'react-intl'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import * as pitchData from "./data/pitches.json";
 import RoomIcon from '@material-ui/icons/Room';
-import { IconButton, Tab, Tabs } from '@material-ui/core';
+import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead
+} from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  light: {backgroundColor:'#d9d9d9'},
+  traditional: {backgroundColor:'#eeece7'},
+  dark: {backgroundColor:'#595959'},
+  table:{
+    margin:"auto"
+  }
+    }));
 
 export default function () {
   const [tab, setTab] = useState(localStorage.getItem('theme:type'))
@@ -17,6 +29,8 @@ export default function () {
     width:"100%",
     height:"100%"
   })
+  const classes = useStyles();
+
 
   const intl = useIntl()
 
@@ -84,16 +98,52 @@ export default function () {
     ))}
     {selectedPitch ? (
     <Popup
+      className={classes[tab]}
       latitude={selectedPitch.geometry.coordinates[0]}
       longitude={selectedPitch.geometry.coordinates[1]}
       onClose={() => {
         setSelectedPitch(null);
       }}
     >
-      <div>
-        <h2>{selectedPitch.properties.NAME}</h2>
-        <p>{selectedPitch.properties.DESCRIPTION}</p>
-      </div>
+
+
+
+
+
+
+
+    <TableContainer component={Paper}>
+      <Table className={classes.table} size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell> <h2>{selectedPitch.properties.NAME}</h2></TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {selectedPitch.properties.HOME &&
+          <TableRow>
+            <TableCell>Home Field:</TableCell>
+            <TableCell>{selectedPitch.properties.HOME}</TableCell>
+          </TableRow>}
+          {selectedPitch.properties.FACILITIES &&
+          <TableRow>
+            <TableCell>Facilities:</TableCell>
+            <TableCell>{selectedPitch.properties.FACILITIES}</TableCell>
+          </TableRow>}
+          {selectedPitch.properties.CLUBHOUSE &&
+          <TableRow>
+            <TableCell>Clubhouse:</TableCell>
+            <TableCell>{selectedPitch.properties.CLUBHOUSE}</TableCell>
+          </TableRow>}
+          {selectedPitch.properties.PARKING &&
+          <TableRow>
+            <TableCell>Parking:</TableCell>
+            <TableCell>{selectedPitch.properties.PARKING}</TableCell>
+          </TableRow>}
+        </TableBody>
+      </Table>
+    </TableContainer>
       </Popup>
     ) : null}
     </ReactMapGL>

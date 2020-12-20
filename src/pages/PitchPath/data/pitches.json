@@ -8,9 +8,13 @@
     {
       "type": "Feature",
       "properties": {
-        "ID":111,
+        "ID":1,
         "DESCRIPTION": 1,
-        "NAME": "Brockton Oval"
+        "NAME": "Brockton Oval",
+        "FACILITIES":"Yes",
+        "HOME":"Rowers",
+        "CLUBHOUSE":"Yes",
+        "PARKING": "Street Parking, parking lot"
       },
       "geometry": {
         "type": "Point",
@@ -20,9 +24,13 @@
     {
       "type": "Feature",
       "properties": {
-        "ID":222,
+        "ID":2,
         "DESCRIPTION": 2,
-        "NAME": "John Hendry"
+        "NAME": "John Hendry",
+        "FACILITIES": "Use community centre",
+        "HOME":"Scribes",
+        "CLUBHOUSE":"Yes, off-site",
+        "PARKING": "Street Parking, parking lot"
       },
       "geometry": {
         "type": "Point",
@@ -32,14 +40,18 @@
     {
       "type": "Feature",
       "properties": {
-        "ID":333,
+        "ID":3,
         "DESCRIPTION": 3,
-        "NAME": "McGavin Rugby Centre"
+        "NAME": "McGavin Rugby Centre",
+        "FACILITIES": "Yes",
+        "HOME":"UBC",
+        "CLUBHOUSE":"Yes",
+        "PARKING": "Street Parking, parking lot"
       },
       "geometry": {
         "type": "Point",
         "coordinates": [49.2596, -123.2416]
       }
-    } 
+    }
   ]
 }
