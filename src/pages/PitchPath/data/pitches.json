@@ -6,52 +6,74 @@
   },
   "features": [
     {
-      "type": "Feature",
-      "properties": {
-        "ID":1,
-        "DESCRIPTION": 1,
-        "NAME": "Brockton Oval",
-        "FACILITIES":"Yes",
-        "HOME":"Rowers",
-        "CLUBHOUSE":"Yes",
-        "PARKING": "Street Parking, parking lot"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [49.2995, -123.1252]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "ID":2,
-        "DESCRIPTION": 2,
-        "NAME": "John Hendry",
-        "FACILITIES": "Use community centre",
-        "HOME":"Scribes",
-        "CLUBHOUSE":"Yes, off-site",
-        "PARKING": "Street Parking, parking lot"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [49.2576, -123.0595]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "ID":3,
-        "DESCRIPTION": 3,
-        "NAME": "McGavin Rugby Centre",
-        "FACILITIES": "Yes",
-        "HOME":"UBC",
-        "CLUBHOUSE":"Yes",
-        "PARKING": "Street Parking, parking lot"
-      },
-      "geometry": {
-        "type": "Point",
-        "coordinates": [49.2596, -123.2416]
-      }
+      "ID":1,
+      "DESCRIPTION": 1,
+      "NAME": "Brockton Oval",
+      "FACILITIES":"Yes",
+      "HOME":"Rowers",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Street Parking, parking lot",
+      "COORDINATES": [49.2995, -123.1252]
+    },{
+      "ID":2,
+      "DESCRIPTION": 2,
+      "NAME": "John Hendry",
+      "FACILITIES": "Use community centre",
+      "HOME":"Scribes",
+      "CLUBHOUSE":"Yes, off-site",
+      "PARKING": "Street Parking, parking lot",
+      "COORDINATES": [49.2576, -123.0595]
+    },{
+      "ID":3,
+      "DESCRIPTION": 3,
+      "NAME": "McGavin Rugby Centre",
+      "FACILITIES": "Yes",
+      "HOME":"UBC",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Street Parking, parking lot",
+      "COORDINATES": [49.2596, -123.2416]
+    },{
+      "ID":4,
+      "DESCRIPTION": 4,
+      "NAME": "Rupert Park",
+      "FACILITIES": "No",
+      "PARKING": "Street Parking, lot at SW corner",
+      "COORDINATES": [49.271510, -123.031646]
+    },{
+      "ID":5,
+      "DESCRIPTION": 5,
+      "NAME": "Gordon Park",
+      "FACILITIES": "Yes",
+      "PARKING": "Street Parking",
+      "COORDINATES": [49.2247979649939, -123.06997519818394]
+    },{
+      "ID":6,
+      "DESCRIPTION": 6,
+      "NAME": "Balaclava Park",
+      "FACILITIES": "Yes",
+      "HOME":"Kats",
+      "CLUBHOUSE":"Yes, off-site",
+      "PARKING": "Street Parking",
+      "COORDINATES": [49.244677, -123.176912]
+    },{
+      "ID":7,
+      "DESCRIPTION": 7,
+      "NAME": "Connaught Park",
+      "FACILITIES": "Yes",
+      "HOME":"Meralomas",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Street Parking",
+      "COORDINATES": [49.262537, -123.159564 ]
+    },{
+      "ID":8,
+      "DESCRIPTION":8,
+      "NAME": "Jericho Park",
+      "FACILITIES": "Yes",
+      "HOME":"UBC-OB",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Yes",
+      "COORDINATES": [49.27298506422851, -123.20055949271567 ]
     }
+    
   ]
 }

@@ -2,7 +2,6 @@ import AppBar from '@material-ui/core/AppBar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
-
 import { useIntl } from 'react-intl'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import * as pitchData from "./data/pitches.json";
@@ -11,13 +10,8 @@ import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, Ta
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  light: {backgroundColor:'#d9d9d9'},
-  traditional: {backgroundColor:'#eeece7'},
-  dark: {backgroundColor:'#595959'},
-  table:{
-    margin:"auto"
-  }
-    }));
+  PopUp: {opacity:'100%'},
+}));
 
 export default function () {
   const [tab, setTab] = useState(localStorage.getItem('theme:type'))
@@ -79,9 +73,9 @@ export default function () {
       <Marker
         offsetTop={-24}
         offsetLeft={-24}
-        key={pitch.properties.ID}
-        latitude={pitch.geometry.coordinates[0]}
-        longitude={pitch.geometry.coordinates[1]}
+        key={pitch.ID}
+        latitude={pitch.COORDINATES[0]}
+        longitude={pitch.COORDINATES[1]}
         >
         <IconButton
           size="medium"
@@ -98,52 +92,46 @@ export default function () {
     ))}
     {selectedPitch ? (
     <Popup
-      className={classes[tab]}
-      latitude={selectedPitch.geometry.coordinates[0]}
-      longitude={selectedPitch.geometry.coordinates[1]}
+      className={classes.PopUp}
+      latitude={selectedPitch.COORDINATES[0]}
+      longitude={selectedPitch.COORDINATES[1]}
       onClose={() => {
         setSelectedPitch(null);
       }}
     >
-
-
-
-
-
-
-
     <TableContainer component={Paper}>
-      <Table className={classes.table} size="small" aria-label="a dense table">
+      <Table size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
-            <TableCell> <h2>{selectedPitch.properties.NAME}</h2></TableCell>
+            <TableCell> <h2>{selectedPitch.NAME}</h2></TableCell>
             <TableCell></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {selectedPitch.properties.HOME &&
+          {selectedPitch.HOME &&
           <TableRow>
             <TableCell>Home Field:</TableCell>
-            <TableCell>{selectedPitch.properties.HOME}</TableCell>
+            <TableCell>{selectedPitch.HOME}</TableCell>
           </TableRow>}
-          {selectedPitch.properties.FACILITIES &&
+          {selectedPitch.FACILITIES &&
           <TableRow>
             <TableCell>Facilities:</TableCell>
-            <TableCell>{selectedPitch.properties.FACILITIES}</TableCell>
+            <TableCell>{selectedPitch.FACILITIES}</TableCell>
           </TableRow>}
-          {selectedPitch.properties.CLUBHOUSE &&
+          {selectedPitch.CLUBHOUSE &&
           <TableRow>
             <TableCell>Clubhouse:</TableCell>
-            <TableCell>{selectedPitch.properties.CLUBHOUSE}</TableCell>
+            <TableCell>{selectedPitch.CLUBHOUSE}</TableCell>
           </TableRow>}
-          {selectedPitch.properties.PARKING &&
+          {selectedPitch.PARKING &&
           <TableRow>
             <TableCell>Parking:</TableCell>
-            <TableCell>{selectedPitch.properties.PARKING}</TableCell>
+            <TableCell>{selectedPitch.PARKING}</TableCell>
           </TableRow>}
         </TableBody>
       </Table>
     </TableContainer>
+
       </Popup>
     ) : null}
     </ReactMapGL>
