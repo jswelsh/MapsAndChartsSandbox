@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { useIntl } from 'react-intl'
 import * as am4core from "@amcharts/amcharts4/core";
 // @ts-ignore
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -28,6 +29,7 @@ const useStyles = makeStyles(() => ({
 
 
 const BCEconomicMap = () => {
+  const intl = useIntl()
   const classes = useStyles();
   useEffect(() => {
     
@@ -287,7 +289,11 @@ const BCEconomicMap = () => {
     };
   }, [])
   return ( 
-    <Page>
+    <Page
+      pageTitle={intl.formatMessage({
+        id: 'BCEconomic',
+        defaultMessage: 'BC Economic Map; Click a economic region to generate a randomize pie chart, real data not included',
+      })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.BCEconomicMap} />
       </Scrollbar>

@@ -1,11 +1,17 @@
 import AppBar from '@material-ui/core/AppBar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
+import { makeStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl'
 import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import * as pitchData from "./data/pitches.json";
 import RoomIcon from '@material-ui/icons/Room';
-import { IconButton, Tab, Tabs } from '@material-ui/core';
+import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead
+} from '@material-ui/core';
+
+const useStyles = makeStyles(() => ({
+  PopUp: {opacity:'100%'},
+}));
 
 export default function () {
   const [tab, setTab] = useState(localStorage.getItem('theme:type'))
@@ -17,6 +23,8 @@ export default function () {
     width:"100%",
     height:"100%"
   })
+  const classes = useStyles();
+
 
   const intl = useIntl()
 
@@ -34,8 +42,8 @@ export default function () {
   return (
     <Page
     pageTitle={intl.formatMessage({
-      id: 'Pitch Path',
-      defaultMessage: 'Pitch Path',
+      id: 'PitchPath',
+      defaultMessage: 'Pitch Path: A Rugby Pitch locator; press esc to exit popups',
     })}
     tabs={
       <AppBar position="static">
@@ -65,9 +73,9 @@ export default function () {
       <Marker
         offsetTop={-24}
         offsetLeft={-24}
-        key={pitch.properties.ID}
-        latitude={pitch.geometry.coordinates[0]}
-        longitude={pitch.geometry.coordinates[1]}
+        key={pitch.ID}
+        latitude={pitch.COORDINATES[0]}
+        longitude={pitch.COORDINATES[1]}
         >
         <IconButton
           size="medium"
@@ -84,16 +92,46 @@ export default function () {
     ))}
     {selectedPitch ? (
     <Popup
-      latitude={selectedPitch.geometry.coordinates[0]}
-      longitude={selectedPitch.geometry.coordinates[1]}
+      className={classes.PopUp}
+      latitude={selectedPitch.COORDINATES[0]}
+      longitude={selectedPitch.COORDINATES[1]}
       onClose={() => {
         setSelectedPitch(null);
       }}
     >
-      <div>
-        <h2>{selectedPitch.properties.NAME}</h2>
-        <p>{selectedPitch.properties.DESCRIPTION}</p>
-      </div>
+    <TableContainer component={Paper}>
+      <Table size="small" aria-label="a dense table">
+        <TableHead>
+          <TableRow>
+            <TableCell> <h2>{selectedPitch.NAME}</h2></TableCell>
+            <TableCell></TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {selectedPitch.HOME &&
+          <TableRow>
+            <TableCell>Home Pitch For:</TableCell>
+            <TableCell>{selectedPitch.HOME}</TableCell>
+          </TableRow>}
+          {selectedPitch.FACILITIES &&
+          <TableRow>
+            <TableCell>Facilities:</TableCell>
+            <TableCell>{selectedPitch.FACILITIES}</TableCell>
+          </TableRow>}
+          {selectedPitch.CLUBHOUSE &&
+          <TableRow>
+            <TableCell>Clubhouse:</TableCell>
+            <TableCell>{selectedPitch.CLUBHOUSE}</TableCell>
+          </TableRow>}
+          {selectedPitch.PARKING &&
+          <TableRow>
+            <TableCell>Parking:</TableCell>
+            <TableCell>{selectedPitch.PARKING}</TableCell>
+          </TableRow>}
+        </TableBody>
+      </Table>
+    </TableContainer>
+
       </Popup>
     ) : null}
     </ReactMapGL>

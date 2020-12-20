@@ -71,6 +71,11 @@ const getMenuItems = (props) => {
       value: '/home',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'home' }),
+    },{
+      value: '/pitch_path',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'Pitch Path' }),
+      /* leftIcon: <DaschboardIcon />, */
     },
     {
       value: '/technologies_graph',
@@ -93,11 +98,6 @@ const getMenuItems = (props) => {
       value: '/tech_tags_graph',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Tech Tags Graph' }),
-      /* leftIcon: <DaschboardIcon />, */
-    },{
-      value: '/pitch_path',
-      visible: isAuthorised,
-      primaryText: intl.formatMessage({ id: 'Pitch Path' }),
       /* leftIcon: <DaschboardIcon />, */
     },
     {

@@ -9,7 +9,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import am4geodata_worldLow from "@amcharts/amcharts4-geodata/worldLow";
 import am4geodata_canadaLow from '@amcharts/amcharts4-geodata/canadaLow';
 // @ts-ignore
-
+import { useIntl } from 'react-intl'
 import am4geodata_region_canada_canadaCountiesLow from '@amcharts/amcharts4-geodata/region/canada/canadaCountiesLow'
 // @ts-ignore
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
@@ -31,6 +31,7 @@ const useStyles = makeStyles(() => ({
 
 
 const CanadianPolygonMap = () => {
+   const intl = useIntl()
   const classes = useStyles();
   useEffect(() => {
     am4core.useTheme(am4themes_animated);
@@ -68,7 +69,11 @@ const CanadianPolygonMap = () => {
   }, [])
   return ( 
     
-    <Page>
+    <Page
+    pageTitle={intl.formatMessage({
+      id: 'CanadaPoly',
+      defaultMessage: 'Canada Polygon Map; A basic map with an on hover effect',
+    })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.CanadianPolygonMap} />
       </Scrollbar>

@@ -3,6 +3,8 @@
 import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import * as am4core from "@amcharts/amcharts4/core";
+import { useIntl } from 'react-intl'
+
 // @ts-ignore
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
@@ -25,6 +27,7 @@ const useStyles = makeStyles(() => ({
 
 const TechnologiesGraph = () => {
   const classes = useStyles();
+  const intl = useIntl()
   useEffect(() => {
 
   am4core.useTheme(am4themes_dark);
@@ -124,7 +127,11 @@ const TechnologiesGraph = () => {
   }, [])
   return ( 
     
-    <Page>
+    <Page
+      pageTitle={intl.formatMessage({
+        id: 'TechnologiesGraph',
+        defaultMessage: 'Technologies Graph: Click the circles, I dare you...',
+      })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.TechnologiesGraph} />
       </Scrollbar>
