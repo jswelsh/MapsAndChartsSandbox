@@ -42,8 +42,8 @@ export default function () {
   return (
     <Page
     pageTitle={intl.formatMessage({
-      id: 'Pitch Path',
-      defaultMessage: 'Pitch Path',
+      id: 'PitchPath',
+      defaultMessage: 'Pitch Path: A Rugby Pitch locator; press esc to exit popups',
     })}
     tabs={
       <AppBar position="static">
@@ -110,7 +110,7 @@ export default function () {
         <TableBody>
           {selectedPitch.HOME &&
           <TableRow>
-            <TableCell>Home Field:</TableCell>
+            <TableCell>Home Pitch For:</TableCell>
             <TableCell>{selectedPitch.HOME}</TableCell>
           </TableRow>}
           {selectedPitch.FACILITIES &&

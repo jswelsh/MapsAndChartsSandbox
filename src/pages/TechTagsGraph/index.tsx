@@ -8,7 +8,7 @@ import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
+import { useIntl } from 'react-intl'
 // @ts-ignore
 import Page from 'material-ui-shell/lib/containers/Page'
 // @ts-ignore
@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
 
 
 const TechTagsGraph = () => {
+    const intl = useIntl()
   const classes = useStyles();
   useEffect(() => {
 
@@ -385,13 +386,6 @@ const TechTagsGraph = () => {
     let hoverState = series.labels.template.states.create("hover");
     hoverState.properties.fill = am4core.color("#86e860");
     
-    let subtitle = chart.titles.create();
-    subtitle.text = "(click to open)";
-    
-    let title = chart.titles.create();
-    title.text = "Most Popular Tags @ StackOverflow";
-    title.fontSize = 20;
-    title.fontWeight = "800";
 
 
     return () => {
@@ -399,7 +393,11 @@ const TechTagsGraph = () => {
     };
   }, [])
   return ( 
-    <Page>
+    <Page
+    pageTitle={intl.formatMessage({
+      id: 'TechTagsGraph',
+      defaultMessage: 'Technology Tags; Most Popular Tags @ Stack Overflow, tags link to Stack Overflow',
+    })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.TechTagsGraph} />
       </Scrollbar>
