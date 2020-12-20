@@ -7,7 +7,7 @@ import * as am4maps from "@amcharts/amcharts4/maps";
 import * as am4charts from "@amcharts/amcharts4/charts";
 // @ts-ignore
 // @ts-ignore
-// import am4themes_animated from '@amcharts/amcharts4/themes/animated';
+import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 // @ts-ignore
 import BCMap from './bc.geojson'
 import Page from 'material-ui-shell/lib/containers/Page'
@@ -16,10 +16,12 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 
 const useStyles = makeStyles(() => ({
   BCEconomicMap: {
-      width: "100%",
+      // width: "100%",
       height: "90vh",
-      paddingTop: "10px",
-      margin:"auto"
+      margin:"auto",
+      paddingTop: "5vh",
+      // paddingBottom: "5vh",
+
     },
     }));
 
@@ -30,7 +32,7 @@ const BCEconomicMap = () => {
   useEffect(() => {
     
     // Themes begin
-    // am4core.useTheme(am4themes_animated);
+    am4core.useTheme(am4themes_animated);
   // Themes end
 
   
@@ -72,7 +74,7 @@ const BCEconomicMap = () => {
 
   // desaturate filter for countries
   var desaturateFilter = new am4core.DesaturateFilter();
-  desaturateFilter.saturation = 0.25;
+  desaturateFilter.saturation = 0.55;
   polygonTemplate.filters.push(desaturateFilter);
 
   // take a color from color set
@@ -143,7 +145,7 @@ const BCEconomicMap = () => {
   // country label
   var countryLabel = chart.chartContainer.createChild(am4core.Label);
   countryLabel.text = "Select a Region";
-  countryLabel.fill = am4core.color("#7678a0");
+  countryLabel.fill = am4core.color("#2f315e");
   countryLabel.fontSize = 40;
 
   countryLabel.hiddenState.properties.dy = 1000;
@@ -229,7 +231,8 @@ const BCEconomicMap = () => {
   }
 
   function zoomToCountry(polygon) {
-      var zoomAnimation = chart.zoomToMapObject(polygon, 1.2, true);
+    console.log(polygon)
+      var zoomAnimation = chart.zoomToMapObject(polygon, 1.3, true);
       if (zoomAnimation) {
           zoomAnimation.events.on("animationended", function () {
               showPieChart(polygon);
@@ -256,6 +259,7 @@ const BCEconomicMap = () => {
 
       var fill = polygon.fill;
       var desaturated = fill.saturate(0.3);
+      var uberDesaturated = fill.saturate(0.4);
 
       for (var i = 0; i < pieSeries.dataItems.length; i++) {
           var dataItem = pieSeries.dataItems.getIndex(i);
@@ -275,7 +279,7 @@ const BCEconomicMap = () => {
 
       countryLabel.text = "{id}";
       countryLabel.dataItem = polygon.dataItem;
-      countryLabel.fill = desaturated;
+      countryLabel.fill = uberDesaturated;
       countryLabel.show();
   }
   return () => {

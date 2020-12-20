@@ -63,7 +63,7 @@ const SignIn = () => {
     event.preventDefault()
     authenticate({
       displayName: 'User',
-      email: username,
+      email: username || 'Anonymous',
     })
   }
 

@@ -104,6 +104,11 @@ const getMenuItems = (props) => {
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Tech Tags Graph' }),
       /* leftIcon: <DaschboardIcon />, */
+    },{
+      value: '/to_name',
+      visible: isAuthorised,
+      primaryText: intl.formatMessage({ id: 'To Name' }),
+      /* leftIcon: <DaschboardIcon />, */
     },
     {
       value: null,

@@ -14,6 +14,8 @@ const TechnologiesGraph = lazy(() => import('../pages/TechnologiesGraph'))
 const BCEconomicMap = lazy(() => import('../pages/BCEconomicMap'))
 const CanadianPolygonMap = lazy(() => import('../pages/CanadianPolygonMap'))
 const TechTagsGraph = lazy(() => import('../pages/TechTagsGraph'))
+const ToName = lazy(() => import('../pages/ToName'))
+
 
 
 
@@ -34,6 +36,8 @@ const routes = [
   <AuthorizedRoute path="/technologies_graph" exact component={TechnologiesGraph} />,
   <AuthorizedRoute path="/canadian_polygon_map" exact component={CanadianPolygonMap} />,
   <AuthorizedRoute path="/tech_tags_graph" exact component={TechTagsGraph} />,
+  <AuthorizedRoute path="/to_name" exact component={ToName} />,
+
 
 ]
 
