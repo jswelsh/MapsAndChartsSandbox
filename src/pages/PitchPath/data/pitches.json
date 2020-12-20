@@ -21,7 +21,7 @@
       "FACILITIES": "Use community centre",
       "HOME":"Scribes",
       "CLUBHOUSE":"Yes, off-site",
-      "PARKING": "Street Parking, parking lot",
+      "PARKING": "Street Parking / Parking Lot",
       "COORDINATES": [49.2576, -123.0595]
     },{
       "ID":3,
@@ -37,7 +37,7 @@
       "DESCRIPTION": 4,
       "NAME": "Rupert Park",
       "FACILITIES": "No",
-      "PARKING": "Street Parking, lot at SW corner",
+      "PARKING": "Street Parking, Parking Lot at SW corner",
       "COORDINATES": [49.271510, -123.031646]
     },{
       "ID":5,
@@ -63,7 +63,7 @@
       "HOME":"Meralomas",
       "CLUBHOUSE":"Yes",
       "PARKING": "Street Parking",
-      "COORDINATES": [49.262537, -123.159564 ]
+      "COORDINATES": [49.262537, -123.159564]
     },{
       "ID":8,
       "DESCRIPTION":8,
@@ -71,9 +71,89 @@
       "FACILITIES": "Yes",
       "HOME":"UBC-OB",
       "CLUBHOUSE":"Yes",
-      "PARKING": "Yes",
-      "COORDINATES": [49.27298506422851, -123.20055949271567 ]
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.27298506422851, -123.20055949271567]
+    },{
+      "ID":9,
+      "DESCRIPTION":9,
+      "NAME": "Klahanie Park",
+      "FACILITIES": "Yes",
+      "HOME":"Capilano",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.32752260952727, -123.12729936765749]
+    },{
+      "ID":10,
+      "DESCRIPTION":10,
+      "NAME": "Burnaby Lake Fields",
+      "FACILITIES": "Yes",
+      "HOME":"Burnaby Lake",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.24917348229288, -122.96327537175891]
+    },{
+      "ID":11,
+      "DESCRIPTION":11,
+      "NAME": "Field 2",
+      "FACILITIES": "Yes",
+      "HOME":"SFU",
+      "CLUBHOUSE":"No",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.2784959074331, -122.92494936480645]
+    },{
+      "ID":12,
+      "DESCRIPTION":13,
+      "NAME": "John Oliver Park",
+      "FACILITIES": "Yes",
+      "HOME":"Brit Lions",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.09688163498171, -122.89897280813435]
+    },{
+      "ID":14,
+      "DESCRIPTION":14,
+      "NAME": "South Surrey Athletic Park",
+      "FACILITIES": "Yes",
+      "HOME":"Bayside",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.040135111368414, -122.814378500651]
+    },{
+      "ID":15,
+      "DESCRIPTION":15,
+      "NAME": "Sullivan Heights Park",
+      "FACILITIES": "Yes",
+      "HOME":"Surrey",
+      "CLUBHOUSE":"Yes, off-site",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.118527207510986, -122.82207211692787]
+    },{
+      "ID":16,
+      "DESCRIPTION":16,
+      "NAME": "Langley Rugby field",
+      "FACILITIES": "Yes",
+      "HOME":"Langley",
+      "CLUBHOUSE":"Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.12962374801778, -122.63316737563076]
+    },{
+      "ID":17,
+      "DESCRIPTION":17,
+      "NAME": "Abbotsford Exhibition Park",
+      "FACILITIES": "Yes",
+      "HOME":"Abbotsford",
+      "CLUBHOUSE":"Yes, off-site",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.06155148539126, -122.32298573456266]
+    },{
+      "ID":18,
+      "DESCRIPTION":18,
+      "NAME": "Cunnings Park",
+      "FACILITIES": "Yes",
+      "HOME":"United",
+      "CLUBHOUSE":"Yes, off-site",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.29049354236047, -122.78718898004456]
     }
-    
   ]
 }
