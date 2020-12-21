@@ -1,8 +1,7 @@
 import AppBar from '@material-ui/core/AppBar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
-import { makeStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { lightBlue } from '@material-ui/core/colors';
+import { makeStyles } from '@material-ui/core/styles';
 
 import { useIntl } from 'react-intl'
 import ReactMapGL, { 
@@ -15,12 +14,9 @@ import ReactMapGL, {
 } from 'react-map-gl'
 import * as data from "./data.json";
 import RoomIcon from '@material-ui/icons/Room';
-import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead, Modal, Divider
+import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead,
 } from '@material-ui/core';
-import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
 import { InfoModal } from './InfoModal'
-
-
 
 const useStyles = makeStyles((theme) => ({
   station: {
@@ -57,18 +53,18 @@ const useStyles = makeStyles((theme) => ({
     top: 0,
     left: 0,
     padding: '10px'},
-  FullScreenControl: {
+  FullscreenControl: {
     position: 'absolute',
     top: 36,
     left: 0,
     padding: '10px'},
-  navStyle: {
+  NavigationControl: {
     position: 'absolute',
     top: 72,
     left: 0,
     padding: '10px'
   },
-  scaleControlStyle:{
+  ScaleControl:{
     position: 'absolute',
     bottom: 36,
     left: 0,
@@ -77,7 +73,12 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-
+const Controls = {
+  FullscreenControl: <FullscreenControl/>,
+  GeolocateControl: <GeolocateControl/>, 
+  NavigationControl: <NavigationControl/>,
+  ScaleControl: <ScaleControl/>
+}
 
 export default function () {
   const [tab, setTab] = useState(localStorage.getItem('theme:type'))
@@ -200,19 +201,13 @@ export default function () {
     </TableContainer>
       </Popup>
     ) : null}
-        <div className={classes.FullScreenControl}>
-          <FullscreenControl />
-        </div>
-        <div className={classes.GeolocateControl}>
-          <GeolocateControl />
-        </div>
-        <div className={classes.navStyle}>
-          <NavigationControl />
-        </div>
-        <div className={classes.scaleControlStyle}>
-          <ScaleControl />
-        </div>
-            <InfoModal />
+    {Object.entries(Controls).map(([key, value]) =>{
+      return( 
+      <div className={classes[key]}>
+        {value}
+      </div>)
+    })}
+    <InfoModal />
     </ReactMapGL>
   </Page>
   )
