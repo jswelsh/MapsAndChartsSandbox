@@ -154,6 +154,13 @@
       "CLUBHOUSE":"Yes, off-site",
       "PARKING": "Parking Lot",
       "COORDINATES": [49.29049354236047, -122.78718898004456]
+    },{
+      "ID":19,
+      "DESCRIPTION":19,
+      "NAME": "Banting Middle School",
+      "FACILITIES": "Yes",
+      "PARKING": "Parking Lot",
+      "COORDINATES": [49.26546844263415, -122.87623315976403]
     }
   ]
 }
