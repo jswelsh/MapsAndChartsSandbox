@@ -73,11 +73,17 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const Controls = {
+const controls = {
   FullscreenControl: <FullscreenControl/>,
   GeolocateControl: <GeolocateControl/>, 
   NavigationControl: <NavigationControl/>,
   ScaleControl: <ScaleControl/>
+}
+const tableRows ={
+  HOME: 'Home Pitch For:',
+  FACILITIES: 'Facilities:',
+  CLUBHOUSE: 'Clubhouse:',
+  PARKING: 'Parking:'
 }
 
 export default function () {
@@ -176,32 +182,21 @@ export default function () {
           </TableRow>
         </TableHead>
         <TableBody>
-          {selectedPitch.HOME &&
-          <TableRow>
-            <TableCell>Home Pitch For:</TableCell>
-            <TableCell>{selectedPitch.HOME}</TableCell>
-          </TableRow>}
-          {selectedPitch.FACILITIES &&
-          <TableRow>
-            <TableCell>Facilities:</TableCell>
-            <TableCell>{selectedPitch.FACILITIES}</TableCell>
-          </TableRow>}
-          {selectedPitch.CLUBHOUSE &&
-          <TableRow>
-            <TableCell>Clubhouse:</TableCell>
-            <TableCell>{selectedPitch.CLUBHOUSE}</TableCell>
-          </TableRow>}
-          {selectedPitch.PARKING &&
-          <TableRow>
-            <TableCell>Parking:</TableCell>
-            <TableCell>{selectedPitch.PARKING}</TableCell>
-          </TableRow>}
+          {Object.entries(tableRows).map(([key, value]) =>{
+            return(
+              selectedPitch[key] &&
+                <TableRow>
+                  <TableCell>{value}</TableCell>
+                  <TableCell>{selectedPitch[key]}</TableCell>
+              </TableRow>
+            )
+          })}
         </TableBody>
       </Table>
     </TableContainer>
       </Popup>
     ) : null}
-    {Object.entries(Controls).map(([key, value]) =>{
+    {Object.entries(controls).map(([key, value]) =>{
       return( 
       <div className={classes[key]}>
         {value}
