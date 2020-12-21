@@ -1,0 +1,68 @@
+{
+  "technologies":[
+    {
+      "name": "Technologies I Use", "value": 500,
+      "children": [
+        {
+          "name": "Languages", "value": 200,
+          "children": [
+            { "name": "JavaScript", "value": 150, "children": [
+              { "name": "TypeScript", "value": 150 }
+            ]},
+            { "name": "Ruby", "value": 150 },
+            { "name": "HTML", "value": 150 },
+            { "name": "CSS", "value": 150, "children": [
+              { "name": "styled-comp", "value":150},
+              { "name": "SCSS", "value": 150 }]},
+            { "name": "SQL", "value": 150 }]
+        },{
+          "name": "Libraries", "value": 200,
+          "children": [
+            { "name": "ActiveRecords", "value": 150 },
+            { "name": "Material-UI", "value": 150 },
+            { "name": "TensorFlow", "value": 150 },
+            { "name": "Bootstrap", "value": 150 },
+            { "name": "socket.IO", "value": 150 },
+            { "name": "amCharts", "value": 150},
+            { "name": "JQuery", "value": 150 },
+            { "name": "Mapbox", "value": 150 },
+            { "name": "React", "value": 150 },
+            { "name": "Keras", "value": 150 },
+            { "name": "Redux", "value": 150 }]
+        },{
+          "name": "Testing", "value": 200,
+          "children": [
+            { "name": "StoryBook", "value":150 },
+            { "name": "Cypress", "value":150 },
+            { "name": "Mocha", "value": 150 },
+            { "name": "Chai", "value": 150 },
+            { "name": "Jest", "value": 150 }]
+        },{
+          "name": "Frameworks", "value": 200,
+          "children": [
+            { "name": "Express", "value": 150 },
+            { "name": "Rails", "value": 150 }]
+        },{
+          "name": "Environments", "value": 200,
+          "children": [
+            { "name": "Node.js", "value": 150 }]
+          },{
+            "name": "Databases", "value": 200,
+            "children": [
+              { "name": "MongoDB", "value": 150, "children": [
+                { "name": "Atlas", "value": 150 }]},
+              { "name": "NoSQL", "value": 150 },
+              { "name": "MySQL", "value": 150 },
+              { "name": "PostgreSQL", "value": 150 }
+              ]
+            },{
+              "name": "Platforms", "value":200, "children": [
+                { "name": "AWS", "value":150 },
+                { "name": "Firebase", "value":150 },
+                { "name": "Heroku", "value":150 },
+                { "name": "Netlify", "value":150 }]
+            }
+        ]
+    }
+  ]
+}

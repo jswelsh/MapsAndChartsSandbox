@@ -14,10 +14,8 @@ import am4geodata_region_canada_canadaCountiesLow from '@amcharts/amcharts4-geod
 // @ts-ignore
 import am4themes_animated from '@amcharts/amcharts4/themes/animated';
 // @ts-ignore
-
 import Page from 'material-ui-shell/lib/containers/Page'
 // @ts-ignore
-
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 
 const useStyles = makeStyles(() => ({
@@ -27,58 +25,55 @@ const useStyles = makeStyles(() => ({
     paddingTop: "10px",
     margin:"auto"
   },
-  }));
+}));
 
 
 const CanadianPolygonMap = () => {
-   const intl = useIntl()
+  const intl = useIntl()
   const classes = useStyles();
   useEffect(() => {
     am4core.useTheme(am4themes_animated);
 
-  var chart = am4core.create("chartDiv", am4maps.MapChart)
-  
-  chart.geodata = am4geodata_region_canada_canadaCountiesLow
-  chart.projection = new am4maps.projections.Miller();
-  
-  let districtSeries = chart.series.push(new am4maps.MapPolygonSeries());
-  districtSeries.geodata = am4geodata_region_canada_canadaCountiesLow;
-  districtSeries.useGeodata = true;
+    var chart = am4core.create("chartDiv", am4maps.MapChart)
+    chart.geodata = am4geodata_region_canada_canadaCountiesLow
+    chart.projection = new am4maps.projections.Miller();
+    
+    let districtSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    districtSeries.geodata = am4geodata_region_canada_canadaCountiesLow;
+    districtSeries.useGeodata = true;
 
-  districtSeries.mapPolygons.template.events.on("over", function(event) {
-    event.target.zIndex = Number.MAX_VALUE;
-    event.target.toFront();
-  });
+    districtSeries.mapPolygons.template.events.on("over", function(event) {
+      event.target.zIndex = Number.MAX_VALUE;
+      event.target.toFront();
+    });
 
-  let provincialSeries = chart.series.push(new am4maps.MapPolygonSeries());
-  provincialSeries.geodata = am4geodata_canadaLow;
-  provincialSeries.mapPolygons.template.fillOpacity = 0;
-  provincialSeries.mapPolygons.template.strokeWidth = 2;
-  provincialSeries.mapPolygons.template.stroke = chart.colors.getIndex(7);
-  provincialSeries.mapPolygons.template.interactionsEnabled = false;
-  
-  
-  var polygonTemplate = districtSeries.mapPolygons.template;
-  polygonTemplate.tooltipText = "{name}";
-  polygonTemplate.fill =  chart.colors.getIndex(2);/* am4core.getIndex(10); */
+    let provincialSeries = chart.series.push(new am4maps.MapPolygonSeries());
+    provincialSeries.geodata = am4geodata_canadaLow;
+    provincialSeries.mapPolygons.template.fillOpacity = 0;
+    provincialSeries.mapPolygons.template.strokeWidth = 2;
+    provincialSeries.mapPolygons.template.stroke = chart.colors.getIndex(7);
+    provincialSeries.mapPolygons.template.interactionsEnabled = false;
 
-  let hoverState = districtSeries.mapPolygons.template.states.create("hover");
-  hoverState.properties.fill = chart.colors.getIndex(4);
-  hoverState.properties.stroke =chart.colors.getIndex(25);
-  hoverState.properties.strokeWidth = 5;
+    var polygonTemplate = districtSeries.mapPolygons.template;
+    polygonTemplate.tooltipText = "{name}";
+    polygonTemplate.fill =  chart.colors.getIndex(2);/* am4core.getIndex(10); */
+
+    let hoverState = districtSeries.mapPolygons.template.states.create("hover");
+    hoverState.properties.fill = chart.colors.getIndex(4);
+    hoverState.properties.stroke =chart.colors.getIndex(25);
+    hoverState.properties.strokeWidth = 5;
   }, [])
   return ( 
     
     <Page
-    pageTitle={intl.formatMessage({
-      id: 'CanadaPoly',
-      defaultMessage: 'Canada Polygon Map; A basic map with an on hover effect',
-    })}>
+      pageTitle={intl.formatMessage({
+        id: 'CanadaPoly',
+        defaultMessage: 'Canada Polygon Map; A basic map with an on hover effect',
+      })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.CanadianPolygonMap} />
       </Scrollbar>
     </Page>
-
   );
 }
 

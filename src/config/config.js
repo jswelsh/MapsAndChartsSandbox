@@ -15,7 +15,6 @@ const config = {
     defaultLocale: parseLanguages(['en'], 'en'),
     onError: (e) => {
       //console.warn(e)
-
       return
     },
   },

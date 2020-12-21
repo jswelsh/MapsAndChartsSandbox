@@ -1,6 +1,5 @@
-import red from '@material-ui/core/colors/red'
-import pink from '@material-ui/core/colors/pink'
-import green from '@material-ui/core/colors/green'
+
+import { red, pink, green } from '@material-ui/core/colors'
 
 const themes = [
   {

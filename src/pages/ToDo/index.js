@@ -8,26 +8,22 @@ import { useIntl } from 'react-intl'
 
 import list from './data.json'
 
-const fields = [
-  {
+const fields = [{
     name: 'name',
     label: 'Name',
-  },
-  {
+  },{
     name: 'description',
     label: 'Description',
     type: 'string'
-  },
-  {
+  },{
     name: 'isActive',
     label: 'Active',
     type: 'bool',
-  },
-  {
+  },{
     name: 'createdTime',
     label: 'Created time',
     type: 'time',
-  },
+  }
 ]
 
 const Row = ({ index, style, data }) => {
