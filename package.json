@@ -12,6 +12,7 @@
     "github-markdown-css": "4.x",
     "intl": "1.x",
     "intl-locales-supported": "1.x",
+    "mapbox-gl": "^2.0.0",
     "material-ui-shell": "1.x",
     "notistack": "1.x",
     "react": "17.x",
@@ -40,9 +41,9 @@
   },
   "browserslist": {
     "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
+      "last 3 chrome versions",
+      "last 3 firefox versions",
+      "last 3 safari versions"
     ],
     "development": [
       "last 1 chrome version",

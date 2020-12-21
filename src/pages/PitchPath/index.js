@@ -12,6 +12,7 @@ import ReactMapGL, {
   Popup,
   Marker,
 } from 'react-map-gl'
+// import './../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 import * as data from "./data.json";
 import RoomIcon from '@material-ui/icons/Room';
 import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead,
