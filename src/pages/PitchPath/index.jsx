@@ -85,6 +85,7 @@ const tableRows ={
   CLUBHOUSE: 'Clubhouse:',
   PARKING: 'Parking:'
 }
+const tabs= ['light', 'traditional', 'dark']
 
 export default function () {
   const [tab, setTab] = useState(localStorage.getItem('theme:type'))
@@ -111,8 +112,7 @@ export default function () {
     }
   },[])
   return (
-    <Page
-    pageTitle={intl.formatMessage({
+    <Page pageTitle={intl.formatMessage({
       id: 'PitchPath',
       defaultMessage: 'Pitch Path: A Rugby Pitch locator',
     })}
@@ -123,10 +123,7 @@ export default function () {
           onChange={(e, t) => setTab(t)}
           aria-label="simple tabs example"
           centered
-        >
-          <Tab label= "light" value= "light" />
-          <Tab label= "traditional" value= "traditional" />
-          <Tab label= "dark" value= "dark" />
+        >{tabs.map(tab => <Tab label={tab} value={tab} />)}
         </Tabs>
       </AppBar>
     }
@@ -161,7 +158,6 @@ export default function () {
         </IconButton>
         <span>{pitch.NAME}</span>
       </div>
-
       </Marker>
     ))}
     {selectedPitch ? (
@@ -185,9 +181,9 @@ export default function () {
           {Object.entries(tableRows).map(([key, value]) =>{
             return(
               selectedPitch[key] &&
-                <TableRow>
-                  <TableCell>{value}</TableCell>
-                  <TableCell>{selectedPitch[key]}</TableCell>
+              <TableRow>
+                <TableCell>{value}</TableCell>
+                <TableCell>{selectedPitch[key]}</TableCell>
               </TableRow>
             )
           })}
