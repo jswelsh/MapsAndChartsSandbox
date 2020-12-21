@@ -129,12 +129,12 @@ export default function () {
     }
   >
     <ReactMapGL 
+    mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
     {...viewport}
     mapStyle={
       tab === "light" ? "mapbox://styles/jswelsh/ckix84ydp0p9c19rr498enr7y" :
       tab === "traditional" ? "mapbox://styles/mapbox/streets-v8" : 
       "mapbox://styles/jswelsh/ck26srect6cnn1cpacapltkyt"}
-    mapboxApiAccessToken={"pk.eyJ1IjoianN3ZWxzaCIsImEiOiJja2l4MGphcGozbG1yMnNwZG9nZnNkbDA0In0.9yfpYdKfH4z4CEopxNi0kQ"}
     onViewportChange={(viewport) => setViewport(viewport)}
     >
     {data.pitches.map(pitch => (
