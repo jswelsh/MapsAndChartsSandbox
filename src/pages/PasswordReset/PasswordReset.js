@@ -92,7 +92,6 @@ const SignUp = () => {
               autoComplete="email"
               autoFocus
             />
-
             <Button
               type="submit"
               fullWidth

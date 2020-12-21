@@ -3,14 +3,28 @@ import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import { useIntl } from 'react-intl'
-import ReactMapGL, { Marker, Popup } from 'react-map-gl'
+import ReactMapGL, { 
+  Marker, 
+  Popup, 
+  GeolocateControl, 
+  FullscreenControl, } from 'react-map-gl'
 import * as data from "./data.json";
 import RoomIcon from '@material-ui/icons/Room';
 import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead
 } from '@material-ui/core';
 
 const useStyles = makeStyles(() => ({
-  PopUp: {opacity:'100%'}
+  PopUp: {opacity:'100%'},
+  GeolocateControl: {  
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    padding: '10px'},
+  FullscreenControl: {
+    position: 'absolute',
+    top: 36,
+    left: 0,
+    padding: '10px'},
 }));
 
 export default function () {
@@ -25,7 +39,7 @@ export default function () {
   })
   const classes = useStyles()
   const intl = useIntl()
-
+  
   useEffect(() => {
     const listener = e => {
       if (e.key === 'Escape') {
@@ -130,6 +144,12 @@ export default function () {
     </TableContainer>
       </Popup>
     ) : null}
+        <div className={classes.GeolocateControl}>
+          <GeolocateControl />
+        </div>
+        <div className={classes.FullScreenControl}>
+          <FullscreenControl />
+        </div>
     </ReactMapGL>
   </Page>
   )

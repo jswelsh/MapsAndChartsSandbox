@@ -14,11 +14,11 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 
 const useStyles = makeStyles(() => ({
   BCEconomicMap: {
-      height: "90vh",
-      margin:"auto",
-      paddingTop: "5vh",
-    },
-    }));
+    height: "90vh",
+    margin:"auto",
+    paddingTop: "5vh",
+  },
+}));
 
 const BCEconomicMap = () => {
   const intl = useIntl()
