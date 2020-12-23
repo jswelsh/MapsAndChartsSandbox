@@ -30,8 +30,7 @@ const routes = [
     component={PasswordReset}
   />,
   <Route path="/about" exact component={About} />,
-/*   <AuthorizedRoute path="/home" exact component={Home} />,
-  <AuthorizedRoute path="/to_do" exact component={ToDo} />, */
+  <AuthorizedRoute path="/home" exact component={Home} />,
   <AuthorizedRoute path="/bc_economic_map" exact component={BCEconomicMap} />,
   <AuthorizedRoute path="/technologies_graph" exact component={TechnologiesGraph} />,
   <AuthorizedRoute path="/canadian_polygon_map" exact component={CanadianPolygonMap} />,

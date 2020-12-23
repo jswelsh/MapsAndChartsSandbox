@@ -16,10 +16,10 @@ export default function () {
         flexDirection: 'column',
       }}
     >
-      <h2>List</h2>
-
+      <h2>This is a sandbox</h2>
+      <h3>Used for testing and experimenting; this is not production level code and seriously lacks cohesion.</h3>
       <div>
-        <Link to="/home">Home</Link>
+        <Link to="/home">check it out</Link>
       </div>
     </div>
   )
