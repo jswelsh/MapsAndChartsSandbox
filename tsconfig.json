@@ -4,6 +4,7 @@
     "module": "esnext",
     "jsx": "react-jsx",
     "strict": true,
+    // "strictNullChecks": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,

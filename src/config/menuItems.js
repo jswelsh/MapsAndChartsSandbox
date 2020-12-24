@@ -2,6 +2,8 @@ import DaschboardIcon from '@material-ui/icons/Dashboard'
 import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import GetApp from '@material-ui/icons/GetApp'
 import LanguageIcon from '@material-ui/icons/Language'
+import BarChartIcon from '@material-ui/icons/BarChart';
+import MapIcon from '@material-ui/icons/Map';
 import LockIcon from '@material-ui/icons/Lock'
 import React from 'react'
 import StyleIcon from '@material-ui/icons/Style'
@@ -75,30 +77,30 @@ const getMenuItems = (props) => {
       value: '/pitch_path',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Pitch Path' }),
-      /* leftIcon: <DaschboardIcon />, */
+      leftIcon: <MapIcon/>,
     },
     {
       value: '/technologies_graph',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Technologies Graph' }),
-      /* leftIcon: <DaschboardIcon />, */
+      leftIcon:  <BarChartIcon/>,
     },
     {
       value: '/bc_economic_map',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'BC Economic Map' }),
-      /* leftIcon: <DaschboardIcon />, */
+      leftIcon: <MapIcon/>,
     },
     {
       value: '/canadian_polygon_map',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Canadian Poly Map' }),
-      /* leftIcon: <DaschboardIcon />, */
+      leftIcon: <MapIcon/>,
     },{
       value: '/tech_tags_graph',
       visible: isAuthorised,
       primaryText: intl.formatMessage({ id: 'Tech Tags Graph' }),
-      /* leftIcon: <DaschboardIcon />, */
+      leftIcon: <BarChartIcon/>,
     },
     {
       value: null,

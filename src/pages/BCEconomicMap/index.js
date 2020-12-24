@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-
+import {useEffect} from 'react'
+import { makeStyles } from '@material-ui/core/styles'
 import { useIntl } from 'react-intl'
-import BCMap from './bc.geojson'
 
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from '@amcharts/amcharts4/themes/animated';
-
+import * as am4core from "@amcharts/amcharts4/core"
+import * as am4maps from "@amcharts/amcharts4/maps"
+import * as am4charts from "@amcharts/amcharts4/charts"
+import am4themes_animated from '@amcharts/amcharts4/themes/animated'
+//@ts-ignore
 import Page from 'material-ui-shell/lib/containers/Page'
+//@ts-ignore
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
+//@ts-ignore
+import BCMap from './bc.geojson'
 
 const useStyles = makeStyles(() => ({
   BCEconomicMap: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(() => ({
     margin:"auto",
     paddingTop: "5vh",
   },
-}));
+}))
 
 const BCEconomicMap = () => {
   const intl = useIntl()
@@ -41,7 +42,7 @@ const BCEconomicMap = () => {
   polygonSeries.useGeodata = true
 
   // regions area look and behavior
-  var polygonTemplate = polygonSeries.mapPolygons.template;
+  var polygonTemplate = polygonSeries.mapPolygons.template
   polygonTemplate.strokeOpacity = 1
   polygonTemplate.stroke = am4core.color("#ffffff")
   polygonTemplate.fillOpacity = 0.5
@@ -49,7 +50,7 @@ const BCEconomicMap = () => {
 
   // de-saturate filter for countries
   var desaturateFilter = new am4core.DesaturateFilter()
-  desaturateFilter.saturation = 0.55;
+  desaturateFilter.saturation = 0.55
   polygonTemplate.filters.push(desaturateFilter)
 
   // take a color from color set
@@ -108,43 +109,43 @@ const BCEconomicMap = () => {
   hiddenState.properties.visible = false
 
   // series labels
-  var labelTemplate = pieSeries.labels.template;
-  labelTemplate.nonScaling = true;
-  labelTemplate.fill = am4core.color("#FFFFFF");
-  labelTemplate.fontSize = 10;
-  labelTemplate.background = new am4core.RoundedRectangle();
-  labelTemplate.background.fillOpacity = 0.9;
-  labelTemplate.background.fill = am4core.color("#7678a0");
-  labelTemplate.padding(4, 9, 4, 9);
+  var labelTemplate = pieSeries.labels.template
+  labelTemplate.nonScaling = true
+  labelTemplate.fill = am4core.color("#FFFFFF")
+  labelTemplate.fontSize = 10
+  labelTemplate.background = new am4core.RoundedRectangle()
+  labelTemplate.background.fillOpacity = 0.9
+  labelTemplate.background.fill = am4core.color("#7678a0")
+  labelTemplate.padding(4, 9, 4, 9)
 
   // we need pie series to hide faster to avoid strange pause after country is clicked
-  pieSeries.hiddenState.transitionDuration = 200;
+  pieSeries.hiddenState.transitionDuration = 200
 
   // country label
-  var countryLabel = chart.chartContainer.createChild(am4core.Label);
-  countryLabel.text = "Select a Region";
-  countryLabel.fill = am4core.color("#2f315e");
-  countryLabel.fontSize = 40;
+  var countryLabel = chart.chartContainer.createChild(am4core.Label)
+  countryLabel.text = "Select a Region"
+  countryLabel.fill = am4core.color("#2f315e")
+  countryLabel.fontSize = 40
 
-  countryLabel.hiddenState.properties.dy = 1000;
-  countryLabel.defaultState.properties.dy = 0;
-  countryLabel.valign = "middle";
-  countryLabel.align = "right";
-  countryLabel.paddingRight = 50;
-  countryLabel.hide(0);
-  countryLabel.show();
+  countryLabel.hiddenState.properties.dy = 1000
+  countryLabel.defaultState.properties.dy = 0
+  countryLabel.valign = "middle"
+  countryLabel.align = "right"
+  countryLabel.paddingRight = 50
+  countryLabel.hide(0)
+  countryLabel.show()
 
   // select polygon
   function selectPolygon(polygon) {
     if(morphedPolygon !== polygon) {
-      var animation = pieSeries.hide();
+      var animation = pieSeries.hide()
       if (animation) {
         animation.events.on("animationended", function () {
-          morphToCircle(polygon);
+          morphToCircle(polygon)
         })
       }
       else {
-        morphToCircle(polygon);
+        morphToCircle(polygon)
       }
     }
   }
@@ -156,8 +157,8 @@ const BCEconomicMap = () => {
       if (polygon !== exceptPolygon) {
         polygon.defaultState.properties.fillOpacity = 0.5
         polygon.animate([{
-          property: "fillOpacity", to: 0.5 },{ 
-          property: "strokeOpacity", to: 1 }], 
+          property: "fillOpacity", to: 0.5 },{
+          property: "strokeOpacity", to: 1 }],
         polygon.polygon.morpher.morphDuration)
       }
     }
@@ -189,7 +190,7 @@ const BCEconomicMap = () => {
     polygon.toFront()
     polygon.polygon.morpher.morphToSingle = true
     var morphAnimation = polygon.polygon.morpher.morphToCircle()
-    polygon.strokeOpacity = 0; // hide stroke for lines not to cross countries
+    polygon.strokeOpacity = 0 // hide stroke for lines not to cross countries
     polygon.defaultState.properties.fillOpacity = 1
     polygon.animate({ property: "fillOpacity", to: 1 }, animationDuration)
     // animate desaturate filter
@@ -212,7 +213,7 @@ const BCEconomicMap = () => {
 
   function zoomToCountry(polygon) {
     console.log(polygon)
-    var zoomAnimation = chart.zoomToMapObject(polygon, 1.3, true);
+    var zoomAnimation = chart.zoomToMapObject(polygon, 1.3, true)
     if (zoomAnimation) {
       zoomAnimation.events.on("animationended", function () {
         showPieChart(polygon)
@@ -224,58 +225,58 @@ const BCEconomicMap = () => {
 
 
   function showPieChart(polygon) {
-    polygon.polygon.measure();
-    var radius = polygon.polygon.measuredWidth / 2 * polygon.globalScale / chart.seriesContainer.scale;
-    pieChart.width = radius * 2;
-    pieChart.height = radius * 2;
-    pieChart.radius = radius;
+    polygon.polygon.measure()
+    var radius = polygon.polygon.measuredWidth / 2 * polygon.globalScale / chart.seriesContainer.scale
+    pieChart.width = radius * 2
+    pieChart.height = radius * 2
+    pieChart.radius = radius
 
-    var centerPoint = am4core.utils.spritePointToSvg(polygon.polygon.centerPoint, polygon.polygon);
-    centerPoint = am4core.utils.svgPointToSprite(centerPoint, chart.seriesContainer);
+    var centerPoint = am4core.utils.spritePointToSvg(polygon.polygon.centerPoint, polygon.polygon)
+    centerPoint = am4core.utils.svgPointToSprite(centerPoint, chart.seriesContainer)
 
-    pieChart.x = centerPoint.x - radius;
-    pieChart.y = centerPoint.y - radius;
+    pieChart.x = centerPoint.x - radius
+    pieChart.y = centerPoint.y - radius
 
-    var fill = polygon.fill;
-    var desaturated = fill.saturate(0.3);
-    var uberDesaturated = fill.saturate(0.4);
+    var fill = polygon.fill
+    var desaturated = fill.saturate(0.3)
+    var uberDesaturated = fill.saturate(0.4)
 
     for (var i = 0; i < pieSeries.dataItems.length; i++) {
-      var dataItem = pieSeries.dataItems.getIndex(i);
-      dataItem.value = Math.round(Math.random() * 100);
+      var dataItem = pieSeries.dataItems.getIndex(i)
+      dataItem.value = Math.round(Math.random() * 100)
       dataItem.slice.fill = am4core.color(am4core.colors.interpolate(
         fill.rgb,
         am4core.color("#ffffff").rgb,
         0.2 * i
-      ));
+      ))
 
-      dataItem.label.background.fill = desaturated;
-      dataItem.tick.stroke = fill;
+      dataItem.label.background.fill = desaturated
+      dataItem.tick.stroke = fill
     }
 
-    pieSeries.show();
-    pieChart.show();
+    pieSeries.show()
+    pieChart.show()
 
-    countryLabel.text = "{id}";
-    countryLabel.dataItem = polygon.dataItem;
-    countryLabel.fill = uberDesaturated;
-    countryLabel.show();
+    countryLabel.text = "{id}"
+    countryLabel.dataItem = polygon.dataItem
+    countryLabel.fill = uberDesaturated
+    countryLabel.show()
   }
   return () => {
-    chart.dispose();
-    };
+    chart.dispose()
+    }
   }, [])
   return ( 
     <Page
       pageTitle={intl.formatMessage({
         id: 'BCEconomic',
-        defaultMessage: 'BC Economic Map: Interactive map of BC; Click a economic region to generate a randomize pie chart, real data not included',
+        defaultMessage: 'BC Economic Map',
       })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.BCEconomicMap} />
       </Scrollbar>
     </Page>
-  );
+  )
 }
 
 export default BCEconomicMap

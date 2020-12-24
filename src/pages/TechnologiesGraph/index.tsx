@@ -5,16 +5,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import * as am4core from "@amcharts/amcharts4/core";
 import { useIntl } from 'react-intl'
 
-// @ts-ignore
-import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_dark from "@amcharts/amcharts4/themes/dark";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 import * as am4plugins_forceDirected from "@amcharts/amcharts4/plugins/forceDirected"
 // @ts-ignore
 import Page from 'material-ui-shell/lib/containers/Page'
-import * as data from "./data.json";
 // @ts-ignore
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
+import * as data from "./data.json";
 
 const useStyles = makeStyles(() => ({
   TechnologiesGraph: {
@@ -59,7 +57,7 @@ const TechnologiesGraph = () => {
     <Page
       pageTitle={intl.formatMessage({
         id: 'TechnologiesGraph',
-        defaultMessage: 'Technologies Graph: A interactive Node graph of the Dev-Tech I use; Click the circles, I dare you...',
+        defaultMessage: 'Technologies Graph',
       })}>
       <Scrollbar>
         <div id="chartDiv"className={classes.TechnologiesGraph} />

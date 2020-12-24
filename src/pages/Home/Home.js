@@ -12,6 +12,7 @@ import {
   List,
   Link,
   ListItem,
+  ListItemIcon,
   Divider,
   ListItemText,
   ListItemAvatar,
@@ -20,11 +21,16 @@ import {
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    root: {
+    List: {
       width: '100%',
       margin: 'auto',
       maxWidth: '600px',
       backgroundColor: theme.palette.background.paper,
+    }, 
+    Paper: {
+      margin: 'auto',
+      maxWidth: '600px',
+      height: '100%'
     },
     inline: {
       display: 'inline',
@@ -63,36 +69,50 @@ const applets = [{
   icon: <BarChartIcon/>
 }
 ]
+
+function ListItemLink(props) {
+  const { icon, primary, secondary, to } = props;
+
+  const renderLink = React.useMemo(
+    () => React.forwardRef((itemProps, ref) => <RouterLink to={to} ref={ref} {...itemProps} />),
+    [to],
+  );
+
+  return (
+    <li>
+      <ListItem button component={renderLink}>
+        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+        <ListItemText primary={primary} secondary={secondary}/>
+      </ListItem>
+    </li>
+  );
+}
+
+
 function AppletsList() {
   const classes = useStyles();
 
   return (
-    <Paper>
-      <List className={classes.root}>
+    <Paper className={classes.Paper}>
+      <List className={classes.List}>
         {applets.map( (applet, index) => { return (
           <>
-            <ListItem alignItems="flex-start" component={RouterLink} to={applet.link}>
-              <ListItemAvatar>
-                <Avatar>
-                  {applet.icon}
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={applet.title}
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                      >
-                      {applet.subHeader}
-                    </Typography>
-                  </React.Fragment>
-                }
-                />
-            </ListItem>
+            <ListItemLink 
+              to={applet.link} 
+              primary={applet.title}
+              secondary={
+                <React.Fragment>
+                  <Typography
+                    component="span"
+                    variant="body2"
+                    className={classes.inline}
+                    color="textPrimary"
+                    >
+                    {applet.subHeader}
+                  </Typography>
+                </React.Fragment>
+              }
+              icon={applet.icon} />
             {(applets.length !== index + 1) && <Divider variant="inset" component="li" />}
           </>
         )})}
@@ -116,3 +136,26 @@ const HomePage = () => {
   )
 }
 export default HomePage
+
+/*             <ListItem alignItems="flex-start" component={RouterLink} to={applet.link}>
+              <ListItemAvatar>
+                <Avatar>
+                  {applet.icon}
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText
+                primary={applet.title}
+                secondary={
+                  <React.Fragment>
+                    <Typography
+                      component="span"
+                      variant="body2"
+                      className={classes.inline}
+                      color="textPrimary"
+                      >
+                      {applet.subHeader}
+                    </Typography>
+                  </React.Fragment>
+                }
+                />
+            </ListItem> */

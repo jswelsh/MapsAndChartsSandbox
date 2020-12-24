@@ -1,7 +1,7 @@
 import AppBar from '@material-ui/core/AppBar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles'
 
 import { useIntl } from 'react-intl'
 import ReactMapGL, { 
@@ -13,10 +13,10 @@ import ReactMapGL, {
   Marker,
 } from 'react-map-gl'
 // import './../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
-import * as data from "./data.json";
-import RoomIcon from '@material-ui/icons/Room';
+import * as data from "./data.json"
+import RoomIcon from '@material-ui/icons/Room'
 import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead,
-} from '@material-ui/core';
+} from '@material-ui/core'
 import { InfoModal } from './InfoModal'
 
 const useStyles = makeStyles((theme) => ({
@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '10px'
   },
 
-}));
+}))
 
 const controls = {
   FullscreenControl: <FullscreenControl/>,
@@ -115,7 +115,7 @@ export default function () {
   return (
     <Page pageTitle={intl.formatMessage({
       id: 'PitchPath',
-      defaultMessage: 'Pitch Path: A Rugby Pitch locator',
+      defaultMessage: 'Pitch Path',
     })}
     tabs={
       <AppBar position="static">
@@ -167,7 +167,7 @@ export default function () {
       latitude={selectedPitch.COORDINATES[0]}
       longitude={selectedPitch.COORDINATES[1]}
       onClose={() => {
-        setSelectedPitch(null);
+        setSelectedPitch(null)
       }}
     >
     <TableContainer component={Paper}>
