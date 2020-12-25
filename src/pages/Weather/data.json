@@ -1,0 +1,52 @@
+{
+  "nodes":[{
+
+  "latitude": 49.28108616026461, 
+  "longitude": -123.12152032736914,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Vancouver: +22C"
+}, {
+  "latitude": 48.47000778525234, 
+  "longitude": -123.5,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/cloudy-day-1.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Victoria: +18C"
+}, {
+  "latitude": 49.14066663303395, 
+  "longitude": -124.00700684195378,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/cloudy-day-1.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Nanaimo: +13C"
+}, {
+  "latitude": 49.10713339950618, 
+  "longitude": -125.86369202751503,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Tofino: +9C"
+}, {
+  "latitude": 41.872389,
+  "longitude": 12.480180,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/day.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Rome: +29C"
+}, {
+  "latitude": 51.507351,
+  "longitude": -0.127758,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/rainy-7.svg",
+  "width": 32,
+  "height": 32,
+  "label": "London: +10C"
+}, {
+  "latitude": 59.329323,
+  "longitude": 18.068581,
+  "imageURL": "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg",
+  "width": 32,
+  "height": 32,
+  "label": "Stockholm: +8C"
+} ]}

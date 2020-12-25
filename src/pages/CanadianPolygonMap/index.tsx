@@ -20,7 +20,6 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-
 const CanadianPolygonMap = () => {
   const intl = useIntl()
   const classes = useStyles()
