@@ -87,38 +87,8 @@ const SignIn = () => {
       <Paper className={classes.paper} elevation={6}>
         <div className={classes.container}>
           <Typography component="h1" variant="h5">
-            {/* {intl.formatMessage({ id: 'sign_in' })} */}
           </Typography>
-{/*           <Typography component="h1" variant="h5">
-            Just click "SIGN IN" with any combination of username and password, or nothing at all
-          </Typography> */}
           <form className={classes.form} onSubmit={handleSubmit} noValidate>
-{/*             <TextField
-              value={username}
-              onInput={(e) => setUsername(e.target.value)}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="username"
-              label={intl.formatMessage({ id: 'username' })}
-              name="username"
-              autoComplete="username"
-              autoFocus
-            />
-            <TextField
-              value={password}
-              onInput={(e) => setPassword(e.target.value)}
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label={intl.formatMessage({ id: 'password' })}
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            /> */}
             <Button
               type="submit"
               fullWidth
@@ -127,25 +97,8 @@ const SignIn = () => {
               className={classes.submit}
             >
               Proceed as anonymous
-              {/* {intl.formatMessage({ id: 'sign_in' })} */}
             </Button>
           </form>
-
-{/*           <div
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              width: '100%',
-              justifyContent: 'space-between',
-            }}
-          >
-            <Link to="/password_reset">
-              {intl.formatMessage({ id: 'forgot_password' })}?
-            </Link>
-            <Link to="/signup">
-              {intl.formatMessage({ id: 'registration' })}
-            </Link>
-          </div> */}
         </div>
       </Paper>
     </Page>

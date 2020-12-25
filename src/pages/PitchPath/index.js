@@ -9,8 +9,8 @@ import ReactMapGL, {
   NavigationControl,
   GeolocateControl,
   ScaleControl,
-  Popup,
   Marker,
+  Popup,
 } from 'react-map-gl'
 // import './../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 import * as data from "./data.json"

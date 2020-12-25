@@ -15,9 +15,7 @@ const BCEconomicMap = lazy(() => import('../pages/BCEconomicMap'))
 const CanadianPolygonMap = lazy(() => import('../pages/CanadianPolygonMap'))
 const TechTagsGraph = lazy(() => import('../pages/TechTagsGraph'))
 const PitchPath = lazy(() => import('../pages/PitchPath'))
-
-
-
+const Weather = lazy(() => import('../pages/Weather'))
 
 const routes = [
   <UnauthorizedRoute path="/signin" redirectTo="/" exact component={SignIn} />,
@@ -36,7 +34,7 @@ const routes = [
   <AuthorizedRoute path="/canadian_polygon_map" exact component={CanadianPolygonMap} />,
   <AuthorizedRoute path="/tech_tags_graph" exact component={TechTagsGraph} />,
   <AuthorizedRoute path="/pitch_path" exact component={PitchPath} />,
-
+  <AuthorizedRoute path="/weather" exact component={Weather} />,
 
 ]
 
