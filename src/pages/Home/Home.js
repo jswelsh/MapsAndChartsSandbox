@@ -130,32 +130,8 @@ const HomePage = () => {
         style={{ height: '100%', width: '100%', display: 'flex', flex: 1 }}
       >
         <AppletsList/>
-        {/* {intl.formatMessage({ id: 'home' })} */}
       </Scrollbar>
     </Page>
   )
 }
 export default HomePage
-
-/*             <ListItem alignItems="flex-start" component={RouterLink} to={applet.link}>
-              <ListItemAvatar>
-                <Avatar>
-                  {applet.icon}
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={applet.title}
-                secondary={
-                  <React.Fragment>
-                    <Typography
-                      component="span"
-                      variant="body2"
-                      className={classes.inline}
-                      color="textPrimary"
-                      >
-                      {applet.subHeader}
-                    </Typography>
-                  </React.Fragment>
-                }
-                />
-            </ListItem> */
