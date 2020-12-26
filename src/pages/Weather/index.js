@@ -274,47 +274,12 @@ const iconMap = {
 
 /* const imgMap ={
   rainy: "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg"
-} */
-const ids = '6173331,5911606,6087844,6065686'
+} */ 
+/* kelowna,kamloops,williams lake,Prince Rupert,Revelstoke,Courtenay,Port Hardy, Prince George,Bella Bella, Clearwater,Smithers,Terrace,Seattle,Spokane,Portland */
+const ids = '6173331,6180144,5976783,6174041,5990579,5989045,6182212,6113406,6121621,5930890,6111862,6113365,5897730,5923667,6149996,6162949,5809844,5811696,5746545'
 const apiKey = '247caa6dbdb7d1f3c1bf6aa5fac887ed'
 
-/* [
-{
-height: 32
-imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg"
-label: "Burnaby: 6.49°C"
-latitude: 49.27
-longitude: -122.95
-width: 32
-},{
-  height: 32
-imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg"
-label: "New Westminster: 6.69°C"
-latitude: 49.21
-longitude: -122.91
-width: 32
-}
-
-]
-*/
-let weatherReports = [
-  {
-    height: 32,
-    imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg",
-    label: "Burnaby: 6.49°C",
-    latitude: 49.27,
-    longitude: -122.95,
-    width: 32
-  },{
-    height: 32,
-    imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg",
-    label: "New Westminster: 6.69°C",
-    latitude: 49.21,
-    longitude: -122.91,
-    width: 32
-  }
-  
-  ]
+let weatherReports = []
 const Weather = () => {
   const intl = useIntl()
   const classes = useStyles()
@@ -325,7 +290,7 @@ const Weather = () => {
     .then((weatherLists) => weatherLists.map((report, index) => {return {
       latitude: report.coord.lat, 
       longitude: report.coord.lon,/* ${iconMap[report.weather[0].id]} */
-      imageURL: `https://www.amcharts.com/lib/images/weather/animated/cloudy.svg`,
+      imageURL: `https://www.amcharts.com/lib/images/weather/animated/${iconMap[report.weather[0].id]}`,
       width: 32,
       height: 32,
       label: `${report.name}: ${report.main.temp}°C`
@@ -334,8 +299,7 @@ const Weather = () => {
       console.log(res)
       weatherReports = [...res]})
       .then((res) => {
-/*   },[]) */
-/*   useEffect(() => { */
+
     am4core.useTheme(am4themes_dark);
     am4core.useTheme(am4themes_animated);
 
@@ -344,8 +308,8 @@ const Weather = () => {
     chart.geodata = am4geodata_worldHigh;
 
     chart.projection = new am4maps.projections.Mercator();
-    chart.homeZoomLevel = 30;
-    chart.homeGeoPoint = { longitude: -122.8, latitude: 52};
+    chart.homeZoomLevel = 25;
+    chart.homeGeoPoint = { longitude: -122.8, latitude: 50};
 
     let polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
     polygonSeries.exclude = ["AQ"];
