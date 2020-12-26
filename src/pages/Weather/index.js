@@ -1,5 +1,7 @@
 /* Imports */
 import {useEffect} from 'react'
+import axios from 'axios';
+
 import { makeStyles } from '@material-ui/core/styles'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4maps from "@amcharts/amcharts4/maps";
@@ -165,20 +167,74 @@ const useStyles = makeStyles(() => ({
     },
 
 */
-const ids= '524901,703448,2643743'
+
+/* 
+{
+  coord: {
+    lon: 37.62,
+    lat: 55.75
+  },
+    sys: {
+    country: "RU",
+    timezone: 10800,
+    sunrise: 1608962361,
+    sunset: 1608987652
+  },
+  weather: [
+    {
+      id: 804,
+      main: "Clouds",
+      description: "overcast clouds",
+      icon: "04n"
+    }
+  ],
+  main: {
+    temp: 271.18,
+    feels_like: 265.76,
+    temp_min: 270.93,
+    temp_max: 271.48,
+    pressure: 1006,
+    humidity: 79
+  },
+  visibility: 10000,
+  wind: {
+    speed: 4,
+    deg: 240
+  },
+  clouds: {
+    all: 90
+  },
+  dt: 1609002486,
+  id: 524901,
+  name: "Moscow"
+},
+*/
+
+const imgMap ={
+  rainy: "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg"
+}
+const ids = '6173331,5911606,6087844,6065686'
 const apiKey = '247caa6dbdb7d1f3c1bf6aa5fac887ed'
+let weatherReports = []
 const Weather = () => {
   const intl = useIntl()
   const classes = useStyles()
   useEffect(() => {
-    fetch(
-      `api.openweathermap.org/data/2.5/group?id=524901,703448,&appid=${apiKey}`
-    )
-    .then(res => res)
-    .then(data => console.log(data))
-/*       .then(res => res.json())
-      .then(res => res.map(user => user.username))
-      .then(userNames => console.log(userNames)); */
+    axios
+    .get(`http://api.openweathermap.org/data/2.5/group?id=${ids}&units=metric&appid=${apiKey}`)
+    .then((res) => res.data.list)
+    .then((weatherLists) => weatherLists.map((report, index) => {return {
+      latitude: report.coord.lat, 
+      longitude: report.coord.lon,
+      imageURL: `http://openweathermap.org/img/wn/${report.weather[0].icon}@2x.png`,
+      label: `${report.name}: ${report.main.temp}°C`
+    }}))
+    .then((res) => {
+      console.log(res)
+      weatherReports = [res]})
+  },[])
+  useEffect(() => {
+
 
     am4core.useTheme(am4themes_dark);
     am4core.useTheme(am4themes_animated);
@@ -216,7 +272,10 @@ const Weather = () => {
     label.verticalCenter = "top";
     label.dy = 20;
 
-    imageSeries.data = data.nodes;
+    imageSeries.data = weatherReports;
+    return () => {
+      chart.dispose()
+      }
   }, [])
 return ( 
   <Page
