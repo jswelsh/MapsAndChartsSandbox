@@ -210,12 +210,111 @@ const useStyles = makeStyles(() => ({
 },
 */
 
-const imgMap ={
-  rainy: "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg"
+const iconMap = {
+  200: 'thunder.svg',
+  201: 'thunder.svg',
+  202: 'thunder.svg',
+  210: 'thunder.svg',
+  211: 'thunder.svg',
+  221: 'thunder.svg',
+  230: 'thunder.svg',
+  231: 'thunder.svg',
+  232: 'thunder.svg',
+
+  300: 'rainy-1.svg',
+  301: 'rainy-1.svg',
+  302: 'rainy-1.svg',
+  310: 'rainy-2.svg',
+  311: 'rainy-2.svg',
+  312: 'rainy-2.svg',
+  313: 'rainy-3.svg',
+  314: 'rainy-3.svg',
+  321: 'rainy-3.svg',
+
+  500: 'rainy-4.svg',
+  501: 'rainy-4.svg',
+  502: 'rainy-4.svg',
+  503: 'rainy-5.svg',
+  504: 'rainy-5.svg',
+  520: 'rainy-6.svg',
+  521: 'rainy-6.svg',
+  522: 'rainy-6.svg',
+  531: 'rainy-6.svg',
+  511: 'rainy-7.svg',
+
+  600: 'snowy-1.svg',
+  601: 'snowy-1.svg',
+  602: 'snowy-6.svg',
+  611: 'snowy-1.svg',
+  612: 'snowy-1.svg',
+  613: 'snowy-1.svg',
+  615: 'snowy-1.svg',
+  616: 'snowy-1.svg',
+  620: 'snowy-1.svg',
+  621: 'snowy-1.svg',
+  622: 'snowy-1.svg',
+
+  701: 'cloudy.svg',
+  711: 'cloudy.svg',
+  721: 'cloudy.svg',
+  731: 'cloudy.svg',
+  741: 'cloudy.svg',
+  751: 'cloudy.svg',
+  761: 'cloudy.svg',
+  762: 'cloudy.svg',
+  771: 'cloudy.svg',
+  781: 'cloudy.svg',
+
+  800: 'cloudy.svg',
+  801: 'cloudy.svg',
+  802: 'cloudy.svg',
+  803: 'cloudy.svg',
+  804: 'cloudy.svg',
 }
+
+/* const imgMap ={
+  rainy: "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg"
+} */
 const ids = '6173331,5911606,6087844,6065686'
 const apiKey = '247caa6dbdb7d1f3c1bf6aa5fac887ed'
-let weatherReports = []
+
+/* [
+{
+height: 32
+imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg"
+label: "Burnaby: 6.49°C"
+latitude: 49.27
+longitude: -122.95
+width: 32
+},{
+  height: 32
+imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg"
+label: "New Westminster: 6.69°C"
+latitude: 49.21
+longitude: -122.91
+width: 32
+}
+
+]
+*/
+let weatherReports = [
+  {
+    height: 32,
+    imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg",
+    label: "Burnaby: 6.49°C",
+    latitude: 49.27,
+    longitude: -122.95,
+    width: 32
+  },{
+    height: 32,
+    imageURL: "https://www.amcharts.com/lib/images/weather/animated/rainy-4.svg",
+    label: "New Westminster: 6.69°C",
+    latitude: 49.21,
+    longitude: -122.91,
+    width: 32
+  }
+  
+  ]
 const Weather = () => {
   const intl = useIntl()
   const classes = useStyles()
@@ -225,17 +324,18 @@ const Weather = () => {
     .then((res) => res.data.list)
     .then((weatherLists) => weatherLists.map((report, index) => {return {
       latitude: report.coord.lat, 
-      longitude: report.coord.lon,
-      imageURL: `http://openweathermap.org/img/wn/${report.weather[0].icon}@2x.png`,
+      longitude: report.coord.lon,/* ${iconMap[report.weather[0].id]} */
+      imageURL: `https://www.amcharts.com/lib/images/weather/animated/cloudy.svg`,
+      width: 32,
+      height: 32,
       label: `${report.name}: ${report.main.temp}°C`
     }}))
     .then((res) => {
       console.log(res)
-      weatherReports = [res]})
-  },[])
-  useEffect(() => {
-
-
+      weatherReports = [...res]})
+      .then((res) => {
+/*   },[]) */
+/*   useEffect(() => { */
     am4core.useTheme(am4themes_dark);
     am4core.useTheme(am4themes_animated);
 
@@ -273,10 +373,11 @@ const Weather = () => {
     label.dy = 20;
 
     imageSeries.data = weatherReports;
-    return () => {
+/*     return () => {
       chart.dispose()
-      }
-  }, [])
+      } */
+    })
+  }, [weatherReports])
 return ( 
   <Page
     pageTitle={intl.formatMessage({
