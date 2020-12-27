@@ -4,19 +4,16 @@ import Scrollbar from 'material-ui-shell/lib/components/Scrollbar/Scrollbar'
 import { useIntl } from 'react-intl'
 import BarChartIcon from '@material-ui/icons/BarChart';
 import MapIcon from '@material-ui/icons/Map';
-import { createStyles, Theme, makeStyles } from '@material-ui/core/styles';
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import { Link as RouterLink, /* LinkProps as RouterLinkProps */ } from 'react-router-dom';
 
 import { 
   Paper,
   List,
-  Link,
   ListItem,
   ListItemIcon,
   Divider,
   ListItemText,
-  ListItemAvatar,
-  Avatar,
   Typography, } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) =>

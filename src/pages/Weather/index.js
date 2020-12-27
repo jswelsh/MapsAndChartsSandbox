@@ -13,8 +13,8 @@ import { useIntl } from 'react-intl'
 import Page from 'material-ui-shell/lib/containers/Page'
 // @ts-ignore
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
-import { CAN, regions, iconMap } from "./data"
-import { Button, Popover, Typography, Menu, MenuItem } from '@material-ui/core'
+import { regions, iconMap } from "./data"
+import { Button, Menu, MenuItem } from '@material-ui/core'
 import AddIcon from '@material-ui/icons/Add'
 import { InfoModal } from './InfoModal'
 
@@ -49,7 +49,7 @@ const Weather = () => {
     setSelectedRegion(region)
     setAnchorEl(null)
   };
-/*     useEffect(() => {
+    useEffect(() => {
       axios
       .get(`http://api.openweathermap.org/data/2.5/group?id=${(regions[selectedRegion].cities.map(city => city.id)).join()}&units=metric&appid=${process.env.REACT_APP_WEATHER_ACCESS_TOKEN}`)
       .then(res => res.data.list)
@@ -62,7 +62,7 @@ const Weather = () => {
         label: `${report.name}: ${report.main.temp}°C`
       }}))
       .then(res => setReports(res))
-    }, [selectedRegion]) */
+    }, [selectedRegion])
 
   useEffect(() => {
     am4core.useTheme(am4themes_dark);
@@ -102,7 +102,6 @@ const Weather = () => {
     label.horizontalCenter = "middle";
     label.verticalCenter = "top";
     label.dy = 20;
-// console.log(getWeatherReports(CAN.BC));
     imageSeries.data = reports;
     return () => {
       chart.dispose()

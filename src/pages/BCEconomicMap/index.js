@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect /* , useState */} from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import { useIntl } from 'react-intl'
 
@@ -22,13 +22,11 @@ const useStyles = makeStyles(() => ({
 }))
 
 const BCEconomicMap = () => {
-  const [theme, setTheme] = useState(localStorage.getItem('theme:type'))
+  // const [theme, setTheme] = useState(localStorage.getItem('theme:type'))
 
   const intl = useIntl()
   const classes = useStyles()
-  useEffect(() => {
-    console.log(localStorage.getItem('theme:type'))
-  }, [localStorage.getItem('theme:type')])
+
   useEffect(() => {
     am4core.useTheme(am4themes_animated)
 
@@ -217,7 +215,6 @@ const BCEconomicMap = () => {
   }
 
   function zoomToCountry(polygon) {
-    console.log(polygon)
     var zoomAnimation = chart.zoomToMapObject(polygon, 1.3, true)
     if (zoomAnimation) {
       zoomAnimation.events.on("animationended", function () {
@@ -270,7 +267,7 @@ const BCEconomicMap = () => {
   return () => {
     chart.dispose()
     }
-  }, [theme])
+  }, [/* theme */])
   return ( 
     <Page
       pageTitle={intl.formatMessage({

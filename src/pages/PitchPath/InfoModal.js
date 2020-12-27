@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import { makeStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import React from 'react'
+import { makeStyles, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { 
   IconButton, 
   Divider,
-  Paper,
   Modal,
   Link
 } from '@material-ui/core';
@@ -90,7 +89,7 @@ function InfoModal() {
       <div>
         {<IconButton
           className={classes.Help}
-          size="large"
+
           color="primary"
           onClick={handleOpen}> 
           <HelpOutlineIcon fontSize="large"/>
@@ -99,7 +98,6 @@ function InfoModal() {
           open={open}
           onClose={handleClose}
           aria-labelledby="simple-modal-about"
-          aria-labelledby="simple-modal-controls"
           aria-describedby="simple-modal-controls-description"
         >
           {body}
