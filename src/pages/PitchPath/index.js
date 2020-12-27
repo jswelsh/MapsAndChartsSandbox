@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import { useIntl } from 'react-intl'
-import ReactMapGL, { 
-  FullscreenControl, 
+import ReactMapGL, {
+  FullscreenControl,
   NavigationControl,
   GeolocateControl,
   ScaleControl,
@@ -113,7 +113,7 @@ export default function () {
     }
   },[])
   return (
-    <Page pageTitle={intl.formatMessage({
+  <Page pageTitle={intl.formatMessage({
       id: 'PitchPath',
       defaultMessage: 'Pitch Path',
     })}

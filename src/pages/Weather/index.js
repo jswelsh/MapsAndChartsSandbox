@@ -1,214 +1,53 @@
 /* Imports */
-import {useEffect} from 'react'
+import React, {useEffect} from 'react'
 import axios from 'axios';
 
 import { makeStyles } from '@material-ui/core/styles'
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4maps from "@amcharts/amcharts4/maps";
-import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh";
-import am4themes_dark from "@amcharts/amcharts4/themes/dark";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+import * as am4core from "@amcharts/amcharts4/core"
+import * as am4maps from "@amcharts/amcharts4/maps"
+import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh"
+import am4themes_dark from "@amcharts/amcharts4/themes/dark"
+import am4themes_animated from "@amcharts/amcharts4/themes/animated"
 import { useIntl } from 'react-intl'
 // @ts-ignore
 import Page from 'material-ui-shell/lib/containers/Page'
 // @ts-ignore
 import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 import * as data from "./data.json"
+import { Button, Popover, Typography, Menu, MenuItem } from '@material-ui/core'
+import AddIcon from '@material-ui/icons/Add';
+import { InfoModal } from './InfoModal'
+
 
 const useStyles = makeStyles(() => ({
   Weather: {
     width: "100%",
-    height: "90vh",
-    paddingTop: "10px",
+    height: "100%",
     margin:"auto"
   },
+  PopOver: {
+    position: 'absolute',
+    top: 36,
+    right: 36,
+    padding: '10px'},
+  FullscreenControl: {
+    position: 'absolute',
+    top: 36,
+    left: 0,
+    padding: '10px'},
+  NavigationControl: {
+    position: 'absolute',
+    top: 72,
+    left: 0,
+    padding: '10px'
+  },
+  ScaleControl:{
+    position: 'absolute',
+    bottom: 36,
+    left: 0,
+    padding: '10px'
+  },
 }))
-/* vancouver,  */
-/* 
-    {
-        "id": 6173331,
-        "name": "Vancouver",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -123.119339,
-            "lat": 49.24966
-        }
-    },{
-        "id": 5911606,
-        "name": "Burnaby",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.952629,
-            "lat": 49.266361
-        }
-    },{
-        "id": 6087844,
-        "name": "New Westminster",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.910919,
-            "lat": 49.206779
-        }
-    },{
-        "id": 6065686,
-        "name": "Maple Ridge",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.601929,
-            "lat": 49.219391
-        }
-    },{
-        "id": 6111706,
-        "name": "Port Coquitlam",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.769318,
-            "lat": 49.266369
-        }
-    },{
-        "id": 6122077,
-        "name": "Richmond",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -67.659302,
-            "lat": 46.074902
-        }
-    },{
-        "id": 6159905,
-        "name": "Surrey",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.825089,
-            "lat": 49.10635
-        }
-    },{
-        "id": 6049430,
-        "name": "Langley",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.585892,
-            "lat": 49.08297
-        }
-    },{
-        "id": 5881792,
-        "name": "Abbotsford",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.285873,
-            "lat": 49.049679
-        }
-    },{
-        "id": 5921357,
-        "name": "Chilliwack",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -121.944267,
-            "lat": 49.174679
-        }
-    },
-    {
-        "id": 6180144,
-        "name": "Whistler",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -122.96946,
-            "lat": 50.116402
-        }
-    },{
-        "id": 5976783,
-        "name": "Hope",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -121.441437,
-            "lat": 49.382992
-        }
-    },
-    {
-        "id": 6147439,
-        "name": "Sidney",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -123.402618,
-            "lat": 48.649639
-        }
-    },
-    {
-        "id": 6174041,
-        "name": "Victoria",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -123.369301,
-            "lat": 48.432941
-        }
-    },
-    {
-        "id": 5943865,
-        "name": "Duncan",
-        "state": "",
-        "country": "CA",
-        "coord": {
-            "lon": -123.70266,
-            "lat": 48.782928
-        }
-    },
-
-*/
-
-/* 
-{
-  coord: {
-    lon: 37.62,
-    lat: 55.75
-  },
-    sys: {
-    country: "RU",
-    timezone: 10800,
-    sunrise: 1608962361,
-    sunset: 1608987652
-  },
-  weather: [
-    {
-      id: 804,
-      main: "Clouds",
-      description: "overcast clouds",
-      icon: "04n"
-    }
-  ],
-  main: {
-    temp: 271.18,
-    feels_like: 265.76,
-    temp_min: 270.93,
-    temp_max: 271.48,
-    pressure: 1006,
-    humidity: 79
-  },
-  visibility: 10000,
-  wind: {
-    speed: 4,
-    deg: 240
-  },
-  clouds: {
-    all: 90
-  },
-  dt: 1609002486,
-  id: 524901,
-  name: "Moscow"
-},
-*/
 
 const iconMap = {
   200: 'thunder.svg',
@@ -271,21 +110,60 @@ const iconMap = {
   803: 'cloudy.svg',
   804: 'cloudy.svg',
 }
+const alberta = [
+  { name: 'Jasper', id: 5985918 },
+  { name: 'Edmonton', id: 5946768 },
+  { name: 'Red Deer', id: 6118158 },
+  { name: 'Calgary', id: 5913490 },
+  { name: 'Medicine Hat', id: 6071618 },
+  { name: 'Fort McMurray', id: 5955895 },
+  { name: 'Grande Prairie', id: 5964347 }
+]
 
-/* const imgMap ={
-  rainy: "https://www.amcharts.com/lib/images/weather/animated/rainy-1.svg"
-} */ 
+const saskatchewan = [
+  { name: 'Saskatoon', id: 6141256 },
+  { name: 'Regina', id: 6119109 },
+  { name: 'Prince Albert', id: 6113335 }
+]
+
+const manitoba = [
+  { name: 'Winnipeg', id: 6183235 },
+  { name: 'Brandon', id: 5907896 }
+]
+
+const ontario = [
+  { name: 'Toronto', id: 6167865 },
+  { name: 'Ottawa', id: 6094817 },
+  // { name: 'Hamilton', id: 5969782 },
+  // { name: 'Kitchener', id: 5992996 },
+  { name: 'London', id: 6058560 },
+  { name: 'Kenora', id: 5991055 },
+  { name: 'Thunder Bay', id: 6166142 },
+  // { name: 'Sault Ste. Marie', id: 6141439 },
+  { name: 'Sudbury', id: 5964700 },
+  { name: 'Barrie', id: 5894171 },
+
+]
+
 /* kelowna,kamloops,williams lake,Prince Rupert,Revelstoke,Courtenay,Port Hardy, Prince George,Bella Bella, Clearwater,Smithers,Terrace,Seattle,Spokane,Portland */
 const ids = '6173331,6180144,5976783,6174041,5990579,5989045,6182212,6113406,6121621,5930890,6111862,6113365,5897730,5923667,6149996,6162949,5809844,5811696,5746545'
-const apiKey = '247caa6dbdb7d1f3c1bf6aa5fac887ed'
-
+// const apiKey = '247caa6dbdb7d1f3c1bf6aa5fac887ed'
 let weatherReports = []
 const Weather = () => {
-  const intl = useIntl()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+const intl = useIntl()
   const classes = useStyles()
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  /* ${process.env.REACT_APP_WEATHER_ACCESS_TOKEN} */
   useEffect(() => {
     axios
-    .get(`http://api.openweathermap.org/data/2.5/group?id=${ids}&units=metric&appid=${apiKey}`)
+    .get(`http://api.openweathermap.org/data/2.5/group?id=${(ontario.map(city => city.id)).join()}&units=metric&appid=${process.env.REACT_APP_WEATHER_ACCESS_TOKEN}`)
     .then((res) => res.data.list)
     .then((weatherLists) => weatherLists.map((report, index) => {return {
       latitude: report.coord.lat, 
@@ -337,11 +215,12 @@ const Weather = () => {
     label.dy = 20;
 
     imageSeries.data = weatherReports;
-/*     return () => {
+    return () => {
       chart.dispose()
-      } */
+      }
     })
-  }, [weatherReports])
+    /* weatherReports */
+  }, [])
 return ( 
   <Page
     pageTitle={intl.formatMessage({
@@ -349,11 +228,24 @@ return (
       defaultMessage: 'Weather',
     })}>
     <Scrollbar>
-      <div id="chartDiv"className={classes.Weather} />
+        <div id="chartDiv"className={classes.Weather} />
+      <Button variant={'outlined'} color={'secondary'} aria-controls="simple-menu" aria-haspopup="true" className={classes.PopOver} onClick={handleClick} endIcon={<AddIcon />}>
+        MENU
+      </Button>
+      <Menu
+        id="simple-menu"
+        anchorEl={anchorEl}
+        keepMounted
+        open={Boolean(anchorEl)}
+        onClose={handleClose}
+        >
+        <MenuItem onClick={handleClose}>WestCoast</MenuItem>
+        <MenuItem onClick={handleClose}>Prairies</MenuItem>
+        <MenuItem onClick={handleClose}></MenuItem>
+      </Menu>
     </Scrollbar>
   </Page>
 )
 }
 
 export default Weather
-// https://www.amcharts.com/lib/images/weather/animated/thunder.svg
