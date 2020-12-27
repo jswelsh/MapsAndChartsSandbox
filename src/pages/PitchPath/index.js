@@ -1,4 +1,5 @@
 import AppBar from '@material-ui/core/AppBar'
+import Scrollbar from 'material-ui-shell/lib/components/Scrollbar'
 import Page from 'material-ui-shell/lib/containers/Page'
 import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
@@ -12,7 +13,6 @@ import ReactMapGL, {
   Marker,
   Popup,
 } from 'react-map-gl'
-// import './../../../node_modules/mapbox-gl/dist/mapbox-gl.css'
 import * as data from "./data.json"
 import RoomIcon from '@material-ui/icons/Room'
 import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, TableContainer, TableHead,
@@ -20,6 +20,11 @@ import { IconButton, Tab, Tabs, Paper, TableCell, TableRow, TableBody, Table, Ta
 import { InfoModal } from './InfoModal'
 
 const useStyles = makeStyles((theme) => ({
+  Map: {
+    width: "100%",
+    height: "100%",
+    margin:"auto"
+  },
   station: {
     borderRadius: '20px',
     paddingRight: '12px',
@@ -71,13 +76,12 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     padding: '10px'
   },
-
 }))
 
 const controls = {
   FullscreenControl: <FullscreenControl/>,
-  GeolocateControl: <GeolocateControl/>, 
   NavigationControl: <NavigationControl/>,
+  GeolocateControl: <GeolocateControl/>, 
   ScaleControl: <ScaleControl/>
 }
 const tableRows ={
@@ -129,6 +133,8 @@ export default function () {
       </AppBar>
     }
   >
+        <Scrollbar>
+    <div className={classes.Map}>
     <ReactMapGL 
     mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
     {...viewport}
@@ -201,6 +207,8 @@ export default function () {
     })}
     <InfoModal />
     </ReactMapGL>
+    </div>  
+    </Scrollbar>
   </Page>
   )
 }

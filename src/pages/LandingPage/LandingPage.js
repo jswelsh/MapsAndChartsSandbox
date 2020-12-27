@@ -19,7 +19,7 @@ export default function () {
       <h2>This is a sandbox</h2>
       <h3>Used for testing and experimenting; this is not production level code and seriously lacks cohesion.</h3>
       <div>
-        <Link to="/home">check it out</Link>
+        <Link to="/home">lets go!</Link>
       </div>
     </div>
   )

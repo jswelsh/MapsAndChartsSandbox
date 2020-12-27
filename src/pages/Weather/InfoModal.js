@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { makeStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { 
-  IconButton, 
-  Paper,  
-  Modal, 
-  Divider
+  IconButton,
+  Divider,
+  Paper,
+  Modal,
+  Link
 } from '@material-ui/core';
 import { lightBlue } from '@material-ui/core/colors';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -39,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
   },
   Help: {
     position: 'absolute',
-    top: 0,
-    left: 42,
+    top: 12,
+    right: 0,
   }
 }));
 
@@ -62,27 +63,30 @@ function InfoModal() {
     <div style={modalStyle} className={classes.paper}>
       <h2 id="simple-modal-about">About</h2>
       <Divider/>
-      An informational and interactive map of Rugby pitches within the BCRU league for the lower-mainland, click a marker to retrieve info for the respective pitch
-      <h2 id="simple-modal-controls">Controls</h2>
+      A Weather applet, let's the user select a region within Canada and grab the forecasts for the current day.
+     <h2 id="simple-modal-controls">Tools</h2>
       <Divider/>
       <p id="simple-modal-controls-description">
-        pitch and bearing: press 'Ctrl' + hold 'Right mouse-button' and move the mouse
-        zoom in: double click 'Right mouse-button'
-        zoom out: press 'Ctrl' + double click 'Right mouse-button'
-        exit PopUp: press 'Esc'
+        <ul>
+        <li><Link target="_blank" href="https://openweathermap.org/api">Openweather API</Link></li>
+        <li><Link target="_blank" href="https://www.amcharts.com/javascript-maps/">amCharts maps</Link></li>
+        <li><Link target="_blank" href="https://material-ui.com/">Material UI</Link></li>
+        <li><Link target="_blank" href="https://reactjs.org/">React</Link></li>
+        <li><Link target="_blank" href="https://github.com/axios/axios">Axios</Link></li>
+        </ul>
       </p>
     </div>
   );
-
+  
   return (
     <ThemeProvider theme={theme}>
       <div>
-        {open === false && <IconButton
+        {<IconButton
+          size="large"
           className={classes.Help}
-          size="medium"
           color="primary"
           onClick={handleOpen}> 
-          <HelpOutlineIcon />
+          <HelpOutlineIcon fontSize="large"/>
         </IconButton>}
         <Modal
           open={open}

@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { makeStyles, Theme, ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { 
   IconButton, 
-  Paper,  
-  Modal, 
-  Divider
+  Divider,
+  Paper,
+  Modal,
+  Link
 } from '@material-ui/core';
 import { lightBlue } from '@material-ui/core/colors';
 import HelpOutlineIcon from '@material-ui/icons/HelpOutline';
@@ -40,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   Help: {
     position: 'absolute',
     top: 0,
-    left: 42,
+    right: 0,
   }
 }));
 
@@ -71,18 +72,28 @@ function InfoModal() {
         zoom out: press 'Ctrl' + double click 'Right mouse-button'
         exit PopUp: press 'Esc'
       </p>
+      <h2 id="simple-modal-controls">Tools</h2>
+      <Divider/>
+      <p id="simple-modal-controls-description">
+        <ul>
+        <li><Link target="_blank" href="https://www.mapbox.com/">mapbox</Link></li>
+        <li><Link target="_blank" href="https://visgl.github.io/react-map-gl/">react-map-gl</Link></li>
+        <li><Link target="_blank" href="https://material-ui.com/">Material UI</Link></li>
+        <li><Link target="_blank" href="https://reactjs.org/">React</Link></li>
+        </ul>
+      </p>
     </div>
   );
 
   return (
     <ThemeProvider theme={theme}>
       <div>
-        {open === false && <IconButton
+        {<IconButton
           className={classes.Help}
-          size="medium"
+          size="large"
           color="primary"
           onClick={handleOpen}> 
-          <HelpOutlineIcon />
+          <HelpOutlineIcon fontSize="large"/>
         </IconButton>}
         <Modal
           open={open}
