@@ -30,20 +30,17 @@ const useStyles = makeStyles(() => ({
     position: 'absolute',
     top: 18,
     right: 64,
-    padding: '10px'},
-
+    padding: '10px'}
 }))
 
 const Weather = () => {
-  const theme = useTheme();
-
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [reports, setReports] = useState([])
   const [selectedRegion, setSelectedRegion] = useState('westCoast')
-
-  console.log(theme)
-  const intl = useIntl()
+  
   const classes = useStyles()
+  const theme = useTheme();
+  const intl = useIntl()
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -69,12 +66,10 @@ const Weather = () => {
 
   useEffect(() => {
     if(theme.palette.type === 'dark' ) {
-      console.log('dark',theme.palette.type === 'dark');
       am4core.unuseTheme(am4themes_spiritedaway)
       am4core.useTheme(am4themes_dark)
     }
     if(theme.palette.type === 'light') {
-      console.log('light',theme.palette.type === 'light');
       am4core.unuseTheme(am4themes_dark)
       am4core.useTheme(am4themes_spiritedaway)
     }  
@@ -115,9 +110,7 @@ const Weather = () => {
     label.verticalCenter = "top";
     label.dy = 20;
     imageSeries.data = reports;
-    return () => {
-      chart.dispose()
-      }
+    return () => chart.dispose()
   }, [reports, selectedRegion, theme.palette.type, theme.palette.text.primary])
 return ( 
   <Page

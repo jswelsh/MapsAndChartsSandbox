@@ -54,9 +54,9 @@ const CanadianPolygonMap = () => {
     hoverState.properties.fill = chart.colors.getIndex(4)
     hoverState.properties.stroke =chart.colors.getIndex(25)
     hoverState.properties.strokeWidth = 5
+    return () => chart.dispose()
   }, [])
   return ( 
-    
     <Page
       pageTitle={intl.formatMessage({
         id: 'CanadaPoly',

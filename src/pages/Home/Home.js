@@ -35,36 +35,42 @@ const useStyles = makeStyles((theme) =>
   }),
 );
 const applets = [{
+  id:'pitchPath',
   title: 'Pitch Path',
   subHeader: 'A rugby pitch locator',
   info: '',
   link: '/pitch_path',
   icon: <MapIcon/>
 },{
+  id:'technologiesGraph',
   title: 'Technologies Graph',
   subHeader: 'An interactive Node graph of the Dev-Tech I use',
   info: 'Click the circles to toggle show/hide functionality of each node',
   link: '/technologies_graph',
   icon: <BarChartIcon/>
 },{
+  id:'bcEconomicMap',
   title: 'BC Economic Map',
   subHeader: 'An interactive map of BC',
   info: 'Click an economic region to generate a randomize pie chart, real data not included',
   link: '/bc_economic_map',
   icon: <MapIcon/>
 },{
+  id:'weatherApp',
   title: 'Weather app',
   subHeader: 'A Canadian weather applet',
   info: '',
   link: '/weather',
   icon: <MapIcon/>,
 },{
+  id:'technologyTags',
   title: 'Technology Tags',
   subHeader: 'an interactive tag map',
   info: 'Most Popular Tags @ Stack Overflow, tags link to Stack Overflow',
   link: '/tech_tags_graph',
   icon: <BarChartIcon/>
 },{
+  id:'canadaPolygonMap',
   title: 'Canada Polygon Map',
   subHeader: 'A basic map with an on hover effect',
   info: '',
@@ -74,20 +80,17 @@ const applets = [{
 ]
 
 function ListItemLink(props) {
-  const { icon, primary, secondary, to } = props;
+  const { to, icon, primary, secondary } = props;
 
   const renderLink = React.useMemo(
     () => React.forwardRef((itemProps, ref) => <RouterLink to={to} ref={ref} {...itemProps} />),
     [to],
-  );
-
+  )
   return (
-    <li>
-      <ListItem button component={renderLink}>
-        {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
-        <ListItemText primary={primary} secondary={secondary}/>
-      </ListItem>
-    </li>
+    <ListItem button component={renderLink}>
+      {icon ? <ListItemIcon>{icon}</ListItemIcon> : null}
+      <ListItemText primary={primary} secondary={secondary}/>
+    </ListItem>
   );
 }
 
@@ -98,10 +101,11 @@ function AppletsList() {
   return (
     <Paper className={classes.Paper}>
       <List className={classes.List}>
-        {applets.map( (applet, index) => { return (
-          <>
-            <ListItemLink 
-              to={applet.link} 
+        {applets.map( (applet, index) => { 
+        return (
+          <div key={applet.id}>
+            <ListItemLink
+              to={applet.link}
               primary={applet.title}
               secondary={
                 <React.Fragment>
@@ -117,7 +121,7 @@ function AppletsList() {
               }
               icon={applet.icon} />
             {(applets.length !== index + 1) && <Divider variant="inset" component="li" />}
-          </>
+          </div>
         )})}
       </List>
     </Paper>

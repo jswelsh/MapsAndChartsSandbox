@@ -48,10 +48,7 @@ const TechTagsGraph = () => {
     
     let hoverState = series.labels.template.states.create("hover")
     hoverState.properties.fill = am4core.color("#86e860")
-
-    return () => {
-      chart.dispose()
-    }
+    return () => chart.dispose()
   }, [])
   return ( 
     <Page

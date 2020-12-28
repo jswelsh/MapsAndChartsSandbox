@@ -2,9 +2,9 @@ const CAN = {
   BC:[
     { name: 'Vancouver', id: 6173331 },
     { name: 'Victoria', id: 6174041 },
-    { name: 'kelowna', id: 5990579 },
-    { name: 'kamloops', id: 5989045 },
-    { name: 'williams lake', id: 6182212 },
+    { name: 'Kelowna', id: 5990579 },
+    { name: 'Kamloops', id: 5989045 },
+    { name: 'Williams lake', id: 6182212 },
     { name: 'Prince Rupert', id: 6113406 },
     { name: 'Courtenay', id: 5930890 },
     { name: 'Port Hardy', id: 6111862 },

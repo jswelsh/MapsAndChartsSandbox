@@ -49,9 +49,7 @@ const TechnologiesGraph = () => {
   let hoverState = networkSeries.links.template.states.create("hover");
   hoverState.properties.strokeWidth = 3;
   hoverState.properties.strokeOpacity = 1;
-  return () => {
-    chart.dispose();
-    };
+  return () => chart.dispose()
   }, [])
   return ( 
     <Page

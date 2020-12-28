@@ -27,7 +27,7 @@ const config = {
     defaultType: 'dark',
   },
   pages: {
-    LandingPage: lazy(() => import('../pages/LandingPage/LandingPage')),
+    LandingPage: lazy(() => import('../pages/LandingPage')),
     PageNotFound: lazy(() => import('../pages/PageNotFound/PageNotFound')),
   },
 }
