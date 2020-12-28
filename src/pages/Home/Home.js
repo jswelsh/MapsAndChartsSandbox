@@ -53,17 +53,23 @@ const applets = [{
   link: '/bc_economic_map',
   icon: <MapIcon/>
 },{
-  title: 'Canada Polygon Map',
-  subHeader: 'A basic map with an on hover effect',
+  title: 'Weather app',
+  subHeader: 'A Canadian weather applet',
   info: '',
-  link: '/canadian_polygon_map',
-  icon: <MapIcon/>
+  link: '/weather',
+  icon: <MapIcon/>,
 },{
   title: 'Technology Tags',
   subHeader: 'an interactive tag map',
   info: 'Most Popular Tags @ Stack Overflow, tags link to Stack Overflow',
   link: '/tech_tags_graph',
   icon: <BarChartIcon/>
+},{
+  title: 'Canada Polygon Map',
+  subHeader: 'A basic map with an on hover effect',
+  info: '',
+  link: '/canadian_polygon_map',
+  icon: <MapIcon/>
 }
 ]
 

@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 
-import { makeStyles } from '@material-ui/core/styles'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
 import * as am4core from "@amcharts/amcharts4/core"
 import * as am4maps from "@amcharts/amcharts4/maps"
 import am4geodata_worldHigh from "@amcharts/amcharts4-geodata/worldHigh"
 import am4themes_dark from "@amcharts/amcharts4/themes/dark"
+import am4themes_spiritedaway from "@amcharts/amcharts4/themes/spiritedaway";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated"
 import { useIntl } from 'react-intl'
 // @ts-ignore
@@ -34,11 +35,13 @@ const useStyles = makeStyles(() => ({
 }))
 
 const Weather = () => {
+  const theme = useTheme();
+
   const [anchorEl, setAnchorEl] = React.useState(null)
   const [reports, setReports] = useState([])
   const [selectedRegion, setSelectedRegion] = useState('westCoast')
 
-
+  console.log(theme)
   const intl = useIntl()
   const classes = useStyles()
 
@@ -51,7 +54,7 @@ const Weather = () => {
   };
     useEffect(() => {
       axios
-      .get(`http://api.openweathermap.org/data/2.5/group?id=${(regions[selectedRegion].cities.map(city => city.id)).join()}&units=metric&appid=${process.env.REACT_APP_WEATHER_ACCESS_TOKEN}`)
+      .get(`https://api.openweathermap.org/data/2.5/group?id=${(regions[selectedRegion].cities.map(city => city.id)).join()}&units=metric&appid=${process.env.REACT_APP_WEATHER_ACCESS_TOKEN}`)
       .then(res => res.data.list)
       .then(weatherLists => weatherLists.map((report, index) => {return {
         latitude: report.coord.lat,
@@ -65,9 +68,17 @@ const Weather = () => {
     }, [selectedRegion])
 
   useEffect(() => {
-    am4core.useTheme(am4themes_dark);
+    if(theme.palette.type === 'dark' ) {
+      console.log('dark',theme.palette.type === 'dark');
+      am4core.unuseTheme(am4themes_spiritedaway)
+      am4core.useTheme(am4themes_dark)
+    }
+    if(theme.palette.type === 'light') {
+      console.log('light',theme.palette.type === 'light');
+      am4core.unuseTheme(am4themes_dark)
+      am4core.useTheme(am4themes_spiritedaway)
+    }  
     am4core.useTheme(am4themes_animated);
-
     let chart = am4core.create("chartDiv", am4maps.MapChart);
 
     chart.geodata = am4geodata_worldHigh;
@@ -99,6 +110,7 @@ const Weather = () => {
 
     let label = imageTemplate.createChild(am4core.Label);
     label.text = "{label}";
+    label.fill = theme.palette.text.primary;
     label.horizontalCenter = "middle";
     label.verticalCenter = "top";
     label.dy = 20;
@@ -106,7 +118,7 @@ const Weather = () => {
     return () => {
       chart.dispose()
       }
-  }, [reports, selectedRegion])
+  }, [reports, selectedRegion, theme.palette.type, theme.palette.text.primary])
 return ( 
   <Page
     pageTitle={intl.formatMessage({

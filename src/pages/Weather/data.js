@@ -1,6 +1,6 @@
 const CAN = {
   BC:[
-/*     { name: 'Vancouver', id: 6173331 },
+    { name: 'Vancouver', id: 6173331 },
     { name: 'Victoria', id: 6174041 },
     { name: 'kelowna', id: 5990579 },
     { name: 'kamloops', id: 5989045 },
@@ -11,7 +11,7 @@ const CAN = {
     { name: 'Prince George', id: 6113365 },
     { name: 'Bella Bella', id: 5897730 },
     { name: 'Clearwater', id: 5923667 },
-    { name: 'Smithers', id: 6149996 }, */
+    { name: 'Smithers', id: 6149996 },
     { name: 'Terrace', id: 6162949 }],
   AB:[
     { name: 'Jasper', id: 5985918 },
